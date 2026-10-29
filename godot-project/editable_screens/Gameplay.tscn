@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dedssrv6nsm14"]
+
+[ext_resource type="Texture2D" uid="uid://cyb8ghn1nw122" path="res://assets/restaurant_approved_8tables.png" id="1"]
+
+[node name="GameplayVisualEditor" type="Control" unique_id=321388488]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="Background" type="TextureRect" parent="." unique_id=1514071116]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+texture = ExtResource("1")
+expand_mode = 1
