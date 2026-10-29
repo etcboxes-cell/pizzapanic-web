@@ -1,0 +1,66 @@
+name: Build and deploy Pizza Panic (Godot Web)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "godot-project/**"
+      - ".github/workflows/deploy-godot-web.yml"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository (including LFS assets)
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Verify Godot project exists
+        run: test -f godot-project/project.godot
+      - name: Install Godot 4.7.2
+        shell: bash
+        run: |
+          set -euo pipefail
+          VERSION=4.7.2
+          wget -q "https://github.com/godotengine/godot/releases/download/${VERSION}-stable/Godot_v${VERSION}-stable_linux.x86_64.zip" -O /tmp/godot.zip
+          unzip -q /tmp/godot.zip -d /tmp
+          sudo install -m 755 "/tmp/Godot_v${VERSION}-stable_linux.x86_64" /usr/local/bin/godot
+          mkdir -p ~/.local/share/godot/export_templates/${VERSION}.stable
+          wget -q "https://github.com/godotengine/godot/releases/download/${VERSION}-stable/Godot_v${VERSION}-stable_export_templates.tpz" -O /tmp/templates.tpz
+          unzip -q /tmp/templates.tpz -d /tmp/godot-templates
+          cp /tmp/godot-templates/templates/* ~/.local/share/godot/export_templates/${VERSION}.stable/
+      - name: Import assets
+        run: godot --headless --path godot-project --editor --import
+      - name: Export Web build
+        run: |
+          mkdir -p _site
+          godot --headless --path godot-project --export-release Web "$GITHUB_WORKSPACE/_site/index.html"
+          test -s _site/index.html
+          test -s _site/index.pck
+          test -s _site/index.wasm
+          touch _site/.nojekyll
+          printf '{"commit":"%s","workflow_run":"%s"}\n' "$GITHUB_SHA" "$GITHUB_RUN_NUMBER" > _site/build-info.json
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+  deploy:
+    needs: export
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
