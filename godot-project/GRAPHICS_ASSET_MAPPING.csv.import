@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://die1qdwtm6ow4"
+
+[deps]
+
+files=["res://GRAPHICS_ASSET_MAPPING.display.translation", "res://GRAPHICS_ASSET_MAPPING.category.translation", "res://GRAPHICS_ASSET_MAPPING.suggested.translation", "res://GRAPHICS_ASSET_MAPPING.initial.translation", "res://GRAPHICS_ASSET_MAPPING.initial.translation", "res://GRAPHICS_ASSET_MAPPING.width.translation", "res://GRAPHICS_ASSET_MAPPING.height.translation", "res://GRAPHICS_ASSET_MAPPING.status.translation"]
+
+source_file="res://GRAPHICS_ASSET_MAPPING.csv"
+dest_files=["res://GRAPHICS_ASSET_MAPPING.display.translation", "res://GRAPHICS_ASSET_MAPPING.category.translation", "res://GRAPHICS_ASSET_MAPPING.suggested.translation", "res://GRAPHICS_ASSET_MAPPING.initial.translation", "res://GRAPHICS_ASSET_MAPPING.initial.translation", "res://GRAPHICS_ASSET_MAPPING.width.translation", "res://GRAPHICS_ASSET_MAPPING.height.translation", "res://GRAPHICS_ASSET_MAPPING.status.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

@@ -2252,31 +2252,47 @@ func create_pause_ui() -> void:
     pause_button.hide()
 
     pause_overlay = PanelContainer.new()
-    pause_overlay.position = Vector2(370, 176)
-    pause_overlay.size = Vector2(540, 368)
+    pause_overlay.position = Vector2(265, 110)
+    pause_overlay.size = Vector2(750, 500)
     pause_overlay.z_index = 200
     pause_overlay.mouse_filter = Control.MOUSE_FILTER_STOP
+    var panel_style := StyleBoxTexture.new()
+    panel_style.texture = load("res://assets/ui/gameplay/pause_wood_board.png")
+    panel_style.texture_margin_left = 85.0
+    panel_style.texture_margin_right = 85.0
+    panel_style.texture_margin_top = 85.0
+    panel_style.texture_margin_bottom = 85.0
+    panel_style.content_margin_left = 86.0
+    panel_style.content_margin_right = 86.0
+    panel_style.content_margin_top = 75.0
+    panel_style.content_margin_bottom = 72.0
+    pause_overlay.add_theme_stylebox_override("panel", panel_style)
     var body := VBoxContainer.new()
-    body.add_theme_constant_override("separation", 24)
+    body.add_theme_constant_override("separation", 20)
     pause_overlay.add_child(body)
     var title := Label.new()
-    title.text = "🍕 SHIFT PAUSED"
+    title.text = "SHIFT PAUSED"
     title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-    title.add_theme_font_size_override("font_size", 32)
+    title.add_theme_font_size_override("font_size", 38)
+    title.add_theme_color_override("font_color", Color("5b2b11"))
     body.add_child(title)
     var note := Label.new()
     note.text = "The clock, customers, chef and waitress are paused."
     note.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
     note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+    note.add_theme_font_size_override("font_size", 19)
+    note.add_theme_color_override("font_color", Color("5b2b11"))
     body.add_child(note)
     var resume_button := Button.new()
-    resume_button.text = "▶ RESUME LEVEL"
-    resume_button.custom_minimum_size = Vector2(0, 66)
+    resume_button.text = "RESUME LEVEL"
+    resume_button.custom_minimum_size = Vector2(0, 74)
+    resume_button.add_theme_font_size_override("font_size", 25)
     resume_button.pressed.connect(resume_shift)
     body.add_child(resume_button)
     var exit_button := Button.new()
-    exit_button.text = "↩ EXIT LEVEL — CHOOSE DAY"
-    exit_button.custom_minimum_size = Vector2(0, 66)
+    exit_button.text = "EXIT LEVEL - CHOOSE DAY"
+    exit_button.custom_minimum_size = Vector2(0, 74)
+    exit_button.add_theme_font_size_override("font_size", 22)
     exit_button.pressed.connect(exit_shift_to_days)
     body.add_child(exit_button)
     root_ui.add_child(pause_overlay)
@@ -3888,6 +3904,19 @@ func draw_table(index: int) -> void:
     var party_data: Dictionary = t.get("party", {})
     var occupied: bool = not party_data.is_empty()
     var table_number: int = int(t.get("number", TABLE_NUMBERS[index]))
+    # Draw guests at chair anchors BEFORE the table artwork so the tabletop
+    # occludes their laps instead of making them appear to sit on the table.
+    if occupied:
+        var guest_count: int = int(party_data.get("size", 0))
+        for k in range(guest_count):
+            var side: float = -1.0 if k % 2 == 0 else 1.0
+            var row: int = floori(float(k) / 2.0)
+            var guest_center: Vector2 = p + Vector2(side * 86.0, -7.0 + float(row) * 26.0)
+            if k == 0 and not customer_one_poses.is_empty():
+                var pose: int = 8 if str(t["state"]) == "eating" else (3 if str(t["state"]) == "pay" else 0)
+                draw_texture_rect(customer_one_poses[pose], Rect2(guest_center - Vector2(31, 80), Vector2(62, 98)), false)
+            else:
+                person(guest_center, party_data["color"], 0.58, sin(elapsed * 3 + k) * 1.5)
     if not draw_mapped_table(table_number, seats):
         # Fallback rectangle only if sprite cannot be loaded.
         draw_rect(Rect2(p-Vector2(62,40), Vector2(124,80)), Color("df4945") if seats == 4 else Color("f6d64a"))
@@ -3897,15 +3926,6 @@ func draw_table(index: int) -> void:
 
     if occupied:
         var party: Dictionary = party_data
-        for k in range(int(party.get("size", 0))):
-            var a := TAU * float(k) / float(party["size"])
-            if k == 0 and not customer_one_poses.is_empty():
-                var customer_pose: int = 8 if str(t["state"]) == "eating" else (3 if str(t["state"]) == "pay" else (0 if seats == 2 else 6))
-                var customer_tex: Texture2D = customer_one_poses[customer_pose]
-                var customer_center: Vector2 = p + Vector2(cos(a)*45, sin(a)*33-24)
-                draw_texture_rect(customer_tex, Rect2(customer_center - Vector2(34, 54), Vector2(68, 108)), false)
-            else:
-                person(p + Vector2(cos(a)*45,sin(a)*33-16),party["color"],.65,sin(elapsed*3+k)*1.5)
         var pizza_label: String = "  |  %d PIZZAS" % int(party.get("pizzas_left", 1)) if int(party.get("pizzas_left", 1)) > 1 else ""
         word("%d GUESTS%s" % [party["size"], pizza_label],p+Vector2(0,6),15,Color("432f2b"))
         if needs_accuracy():
@@ -3953,12 +3973,12 @@ func _draw() -> void:
         word("PIZZA PANIC!",Vector2(180,49),26,Color("ffe2a3"))
         
     if restaurant_background != null:
-        word(str(wallet_coins), Vector2(425, 42), 23, Color("fff4da"))
-        word(str(maxi(0, ceili(remaining))), Vector2(623, 42), 23, Color("fff4da"))
-        word(str(served), Vector2(1015, 42), 23, Color("fff4da"))
-        word(str(queue.size()), Vector2(1220, 42), 23, Color("fff4da"))
+        word(str(wallet_coins), Vector2(482, 42), 23, Color("fff4da"))
+        word(str(maxi(0, ceili(remaining))), Vector2(783, 42), 23, Color("fff4da"))
+        word(str(served), Vector2(1110, 42), 23, Color("fff4da"))
+        word(str(queue.size()), Vector2(1195, 42), 23, Color("fff4da"))
     word("WAITING PARTIES",Vector2(106,116),21,Color("fff4da"))
-    word("ALPHA 13.35", Vector2(1165, 695), 13, Color("fff4da"))
+    word("ALPHA 13.39", Vector2(1165, 695), 13, Color("fff4da"))
     for i in range(4):
         var p := Vector2(106,185+i*116)
         draw_rect(Rect2(p-Vector2(88,45),Vector2(175,98)),Color(1.0, 0.95, 0.83, 0.86) if selected_party==i else Color(0.95, 0.80, 0.62, 0.75))
@@ -4087,14 +4107,14 @@ func _draw() -> void:
             # Draw the same walk cycle in either direction without changing gameplay coordinates.
             if waitress_facing_left:
                 draw_set_transform(waitress_pos + Vector2(0, 30), 0.0, Vector2(-1.0, 1.0))
-                draw_character_sprite(walk_tex, Vector2.ZERO, 112.0, true)
+                draw_character_sprite(walk_tex, Vector2.ZERO, 145.0, true)
                 draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
             else:
-                draw_character_sprite(walk_tex, waitress_pos + Vector2(0, 30), 112.0, true)
+                draw_character_sprite(walk_tex, waitress_pos + Vector2(0, 30), 145.0, true)
         else:
-            draw_character_sprite(waitress_poses[waitress_pose_index()], waitress_pos + Vector2(0, 30), 112.0, true)
+            draw_character_sprite(waitress_poses[waitress_pose_index()], waitress_pos + Vector2(0, 30), 145.0, true)
     else:
-        draw_character_sprite(waitress_poses[waitress_pose_index()], waitress_pos + Vector2(0, 30), 112.0, false)
+        draw_character_sprite(waitress_poses[waitress_pose_index()], waitress_pos + Vector2(0, 30), 145.0, false)
     
     if not held_tickets.is_empty(): word("TICKETS %d/2" % held_tickets.size(),waitress_pos+Vector2(0,-41),15,Color("fff3b5"))
     if not carried_pizzas.is_empty(): word("PIZZAS %d/%d" % [carried_pizzas.size(), 4 if has_upgrade("tray") else 2],waitress_pos+Vector2(0,-41),15,Color("fff3b5"))

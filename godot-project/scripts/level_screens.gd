@@ -83,9 +83,9 @@ func setup(host) -> void:
     image(pre, "pre_level", "happy-customers.png", Vector2(669,512), Vector2(58,58))
     pre_parties = label(pre, "PartySchedule", Vector2(735,507), Vector2(282,68), 22, Color("693415"))
     var start := button(pre, "pre_level", "button-start-level.png", Vector2(443,619), Vector2(394,96), Callable(self,"start_level"))
-    start.tooltip_text = "Start this day. Existing expansion and tutorial rules still apply."
+    start.tooltip_text = ""
     var close := button(pre, "pre_level", "close-button.png", Vector2(1008, 141), Vector2(81,80), Callable(self,"close_pre"))
-    close.tooltip_text = "Return to Level Select"
+    close.tooltip_text = ""
     pre.hide()
 
     selector = Control.new()
@@ -114,11 +114,11 @@ func setup(host) -> void:
     back_arrow = button(selector,"level_select","how-to-left.png",Vector2(624,373),Vector2(55,55),Callable(self,"previous_page"))
     next_arrow = button(selector,"level_select","how-to-right.png",Vector2(1207,373),Vector2(57,55),Callable(self,"next_page"))
     notice = label(selector,"SelectionHint",Vector2(700,625),Vector2(470,34),15,Color("fff2c6"),true)
-    var home := button(selector,"level_select","main-menu-button.png",Vector2(26,634),Vector2(155,52),Callable(game,"show_main_menu"))
-    home.tooltip_text = "Return to Main Menu"
+    var home := button(selector,"level_select","main-menu-button.png",Vector2(852,650),Vector2(155,52),Callable(game,"show_main_menu"))
+    home.tooltip_text = ""
     var coin_plus := button(selector,"level_select","add-coins.png",Vector2(790,20),Vector2(66,66),Callable(self,"open_coin_preview"))
     coin_plus.name = "EarnCoinsPlus"
-    coin_plus.tooltip_text = "Open Earn More Coins"
+    coin_plus.tooltip_text = ""
     coin_plus.z_index = 20
     coin_plus.mouse_filter = Control.MOUSE_FILTER_STOP
     selector.hide()
@@ -140,7 +140,7 @@ func show_pre() -> void:
         if last_space > 90: summary = summary.substr(0,last_space)
         summary += "…"
     pre_description.text = summary
-    pre_description.tooltip_text = full_brief
+    pre_description.tooltip_text = ""
     # party_cap means scheduled PARTIES, not individual people.
     pre_cash.text = "Earn %d coins" % int(game.call("cfg","goal"))
     pre_parties.text = "%d parties arriving" % int(game.call("cfg","party_cap"))
@@ -169,8 +169,8 @@ func refresh_select() -> void:
         earned += clampi(int(history.get(str(n),0)),0,3)
     coin_label.text = str(game.get("wallet_coins"))
     stars_label.text = "%d/60" % earned
-    stars_label.tooltip_text = "Stars earned in this chapter / 60 possible"
-    chapter_label.text = "LEVELS %d–%d" % [page * 20 + 1,page * 20 + 20]
+    stars_label.tooltip_text = ""
+    chapter_label.text = "" # Remove text overlapping level tiles 17 and 18
     notice.text = ""
     for old in cells.get_children(): old.queue_free()
     for index in range(20):
@@ -197,7 +197,7 @@ func refresh_select() -> void:
         th = square_side
         var tile := button(cells,"level_select",sprite,Vector2(px,py),Vector2(tw,th),Callable(self,"choose_level").bind(id))
         tile.disabled = not available
-        tile.tooltip_text = "Select Level %d" % (id + 1) if available else "Level %d locked" % (id + 1)
+        tile.tooltip_text = "" # No selection feedback popup
         var num := label(cells,"Level_%d" % (id + 1),Vector2(px,py),Vector2(tw,th),44,Color.WHITE,true)
         num.text = str(id + 1)
         num.add_theme_color_override("font_outline_color",Color("37211f"))

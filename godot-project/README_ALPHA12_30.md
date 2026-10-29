@@ -1,0 +1,1 @@
+Alpha 12.30: Levels 6–10 learning-curve rebalance. Day 7/8 reduced arrival pressure and more time to learn double pizzas. Starting queue timers remain 80s normal / 70s Rush. No save reset. Runtime testing pending.

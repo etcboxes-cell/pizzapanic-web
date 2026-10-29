@@ -18,8 +18,11 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="Pizza Panic - Alpha 12.82 Button Press Feedback"
+config/name="Pizza Panic - Alpha 13.39"
 run/main_scene="res://scenes/Main.tscn"
+boot_splash/image="res://index.png"
+boot_splash/show_image=true
+boot_splash/bg_color=Color(0.15, 0.08, 0.035, 1)
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [autoload]

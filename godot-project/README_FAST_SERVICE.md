@@ -1,0 +1,2 @@
+# Fast Service Bonuses
+Deliver the correct final pizza within 5 seconds after taking the order to multiply remaining patience by 1.25, once per party. Payment within 5 seconds of the end of eating multiplies remaining patience by 1.25 before tip is calculated. The maximum is 125 points. Table and waiting-line bars use green/yellow/red thresholds. Patience timing changes proposed in chat are not applied to this recording build. Test in Godot.

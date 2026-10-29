@@ -73,12 +73,12 @@ func setup(host: Node) -> void:
     music_switch.set_meta("no_press_shrink", true)
     effects_switch = picture_button(self, "switch-off.png", Vector2(784, 390), Vector2(107,56), Callable(self,"toggle_effects"))
     effects_switch.set_meta("no_press_shrink", true)
-    picture_button(self, "go-to-button.png", Vector2(783.5, 481), Vector2(112,79), Callable(self,"follow_us")).tooltip_text = "Open Pizza Panic on Instagram"
-    picture_button(self, "go-to-button.png", Vector2(783.5, 551), Vector2(112,79), Callable(self,"earn_coins")).tooltip_text = "Watch an optional rewarded advertisement (+50 coins if completed)"
+    picture_button(self, "go-to-button.png", Vector2(783.5, 470), Vector2(112,79), Callable(self,"follow_us")).tooltip_text = "Open Pizza Panic on Instagram"
+    picture_button(self, "go-to-button.png", Vector2(783.5, 563), Vector2(112,79), Callable(self,"earn_coins")).tooltip_text = "Watch an optional rewarded advertisement (+50 coins if completed)"
     status_label = label(self, "Feedback", "", Vector2(313, 627), Vector2(635, 40), 16)
     status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
     picture_button(self, "close.png", Vector2(1041, 191), Vector2(81,80), Callable(self,"close_settings")).tooltip_text = "Back to Main Menu"
-    var build_label := label(self, "BuildVersion", "ALPHA 13.35", Vector2(1034, 644), Vector2(135, 24), 13)
+    var build_label := label(self, "BuildVersion", "ALPHA 13.39", Vector2(1034, 644), Vector2(135, 24), 13)
     build_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
     refresh()
     hide()
@@ -110,7 +110,7 @@ func earn_coins() -> void:
 
 func follow_us() -> void:
     if INSTAGRAM_URL.is_empty():
-        status_label.text = "Instagram link not configured yet."
+        status_label.text = ""
     else:
         OS.shell_open(INSTAGRAM_URL)
 

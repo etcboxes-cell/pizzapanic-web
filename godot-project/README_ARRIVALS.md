@@ -1,0 +1,1 @@
+Natural arrivals: one opening party; subsequent parties trickle in at preplanned slightly randomized intervals during first 92% of shift. Existing party caps and special reservation maintained. Godot runtime test pending.

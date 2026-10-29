@@ -23,7 +23,9 @@ void fragment() {
     float ripple = 0.005 * sin(UV.y * 115.0 + TIME * 5.0);
     float edge = mix(0.078, 0.905, clamp(fill_ratio, 0.0, 1.0)) + ripple;
     float remaining = smoothstep(edge - 0.012, edge + 0.006, UV.x);
-    vec3 lane = mix(cheese, sauce, remaining);
+    // Gently animate the molten surface without moving the frame.
+    float bubbles = 0.025 * sin(UV.x * 85.0 + TIME * 3.0) * sin(UV.y * 90.0 - TIME * 2.1);
+    vec3 lane = mix(cheese, sauce, remaining) * (1.0 + bubbles);
     result.rgb = mix(original.rgb, lane, inner_mask);
     COLOR = vec4(result.rgb, original.a);
 }
