@@ -1,0 +1,324 @@
+{
+  "character_id": "customer_01",
+  "name": "brunette_pink_top",
+  "revision": "Alpha 12.71 customer 01 yellow seat batch",
+  "slot_template_count": 26,
+  "approved_count": 8,
+  "required_seats": [
+    "red_top_left",
+    "red_top_right",
+    "red_bottom_left",
+    "red_bottom_right",
+    "yellow_left",
+    "yellow_right"
+  ],
+  "assets": [
+    {
+      "id": "left_waiting",
+      "file": "left_waiting.png",
+      "size_px": [
+        640,
+        928
+      ],
+      "approved": true,
+      "frame_type": "waiting",
+      "source_file": "customer01_yellow_left_waiting.png",
+      "character_has_no_baked_in_chair_or_table": true,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "sha256": "445f85a1fa66673e228bccd1cea7f6d5a3cc5026bd77acb1cae1cc47e3b1116e"
+    },
+    {
+      "id": "left_menu",
+      "file": "left_menu.png",
+      "size_px": [
+        640,
+        928
+      ],
+      "approved": true,
+      "frame_type": "menu",
+      "source_file": "customer01_yellow_left_menu.png",
+      "character_has_no_baked_in_chair_or_table": true,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "sha256": "f0977800feb1a413c4bfa0ac68f1ac7616ae1fab5209b4232e2c1748e1abf826"
+    },
+    {
+      "id": "left_bite",
+      "file": "left_bite.png",
+      "size_px": [
+        640,
+        928
+      ],
+      "approved": true,
+      "frame_type": "bite",
+      "source_file": "customer01_yellow_left_bite.png",
+      "character_has_no_baked_in_chair_or_table": true,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "sha256": "b80581e0c3e507c379c5249a4ebd0a768164d1ece8b82a3a1abecf108d41f5ea"
+    },
+    {
+      "id": "left_chew",
+      "file": "left_chew.png",
+      "size_px": [
+        640,
+        928
+      ],
+      "approved": true,
+      "frame_type": "chew",
+      "source_file": "customer01_yellow_left_chew.png",
+      "character_has_no_baked_in_chair_or_table": true,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "sha256": "7e9f6dad9213986506769a6797211b6cb5e592192170e73940c43f807af4d40c"
+    },
+    {
+      "id": "right_waiting",
+      "file": "right_waiting.png",
+      "size_px": [
+        640,
+        928
+      ],
+      "approved": true,
+      "frame_type": "waiting",
+      "source_file": "customer01_yellow_right_waiting.png",
+      "character_has_no_baked_in_chair_or_table": true,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "sha256": "79c961bb91f3bb35925e0253cbd0f5b7285672a5297f11573c275ff389315714"
+    },
+    {
+      "id": "right_menu",
+      "file": "right_menu.png",
+      "size_px": [
+        640,
+        928
+      ],
+      "approved": true,
+      "frame_type": "menu",
+      "source_file": "customer01_yellow_right_menu.png",
+      "character_has_no_baked_in_chair_or_table": true,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "sha256": "6c3f1e38680ee43257b1d19f8e051ed5211b3a78146447e937ac4536d874a09d"
+    },
+    {
+      "id": "right_bite",
+      "file": "right_bite.png",
+      "size_px": [
+        640,
+        928
+      ],
+      "approved": true,
+      "frame_type": "bite",
+      "source_file": "customer01_yellow_right_bite.png",
+      "character_has_no_baked_in_chair_or_table": true,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "sha256": "4ab2b3c07cf155173c5a99a2995fad7d12a79965b708931c2b46f923ea585112"
+    },
+    {
+      "id": "right_chew",
+      "file": "right_chew.png",
+      "size_px": [
+        640,
+        928
+      ],
+      "approved": true,
+      "frame_type": "chew",
+      "source_file": "customer01_yellow_right_chew.png",
+      "character_has_no_baked_in_chair_or_table": true,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "sha256": "762fa9e15c5b6838ec5cac5f261c9a805abc630c9ace747dfd0e04e3dd785f68"
+    }
+  ],
+  "slots": [
+    {
+      "number": 1,
+      "seat": "standing",
+      "state": "happy",
+      "status": "pending_red_and_standing"
+    },
+    {
+      "number": 2,
+      "seat": "standing",
+      "state": "impatient",
+      "status": "pending_red_and_standing"
+    },
+    {
+      "number": 3,
+      "seat": "red_top_left",
+      "state": "waiting",
+      "status": "pending_red_review"
+    },
+    {
+      "number": 4,
+      "seat": "red_top_right",
+      "state": "waiting",
+      "status": "pending_red_review"
+    },
+    {
+      "number": 5,
+      "seat": "red_bottom_left",
+      "state": "waiting",
+      "status": "pending_red_review"
+    },
+    {
+      "number": 6,
+      "seat": "red_bottom_right",
+      "state": "waiting",
+      "status": "pending_red_review"
+    },
+    {
+      "number": 7,
+      "seat": "yellow_left",
+      "state": "waiting",
+      "status": "approved",
+      "file": "yellow/left_waiting.png"
+    },
+    {
+      "number": 8,
+      "seat": "yellow_right",
+      "state": "waiting",
+      "status": "approved",
+      "file": "yellow/right_waiting.png"
+    },
+    {
+      "number": 9,
+      "seat": "red_top_left",
+      "state": "menu",
+      "status": "pending_red_review"
+    },
+    {
+      "number": 10,
+      "seat": "red_top_right",
+      "state": "menu",
+      "status": "pending_red_review"
+    },
+    {
+      "number": 11,
+      "seat": "red_bottom_left",
+      "state": "menu",
+      "status": "pending_red_review"
+    },
+    {
+      "number": 12,
+      "seat": "red_bottom_right",
+      "state": "menu",
+      "status": "pending_red_review"
+    },
+    {
+      "number": 13,
+      "seat": "yellow_left",
+      "state": "menu",
+      "status": "approved",
+      "file": "yellow/left_menu.png"
+    },
+    {
+      "number": 14,
+      "seat": "yellow_right",
+      "state": "menu",
+      "status": "approved",
+      "file": "yellow/right_menu.png"
+    },
+    {
+      "number": 15,
+      "seat": "red_top_left",
+      "state": "bite",
+      "status": "pending_red_review"
+    },
+    {
+      "number": 16,
+      "seat": "red_top_right",
+      "state": "bite",
+      "status": "pending_red_review"
+    },
+    {
+      "number": 17,
+      "seat": "red_bottom_left",
+      "state": "bite",
+      "status": "pending_red_review"
+    },
+    {
+      "number": 18,
+      "seat": "red_bottom_right",
+      "state": "bite",
+      "status": "pending_red_review"
+    },
+    {
+      "number": 19,
+      "seat": "yellow_left",
+      "state": "bite",
+      "status": "approved",
+      "file": "yellow/left_bite.png"
+    },
+    {
+      "number": 20,
+      "seat": "yellow_right",
+      "state": "bite",
+      "status": "approved",
+      "file": "yellow/right_bite.png"
+    },
+    {
+      "number": 21,
+      "seat": "red_top_left",
+      "state": "chew",
+      "status": "pending_red_review"
+    },
+    {
+      "number": 22,
+      "seat": "red_top_right",
+      "state": "chew",
+      "status": "pending_red_review"
+    },
+    {
+      "number": 23,
+      "seat": "red_bottom_left",
+      "state": "chew",
+      "status": "pending_red_review"
+    },
+    {
+      "number": 24,
+      "seat": "red_bottom_right",
+      "state": "chew",
+      "status": "pending_red_review"
+    },
+    {
+      "number": 25,
+      "seat": "yellow_left",
+      "state": "chew",
+      "status": "approved",
+      "file": "yellow/left_chew.png"
+    },
+    {
+      "number": 26,
+      "seat": "yellow_right",
+      "state": "chew",
+      "status": "approved",
+      "file": "yellow/right_chew.png"
+    }
+  ],
+  "approved_by_user": true,
+  "integrated_as_assets_only": true,
+  "runtime_customer_rendering_updated": false,
+  "asset_reuse": "Character only, no chairs, no tables; layer with background table/chairs",
+  "note": "Approved yellow-seat poses, PNGs padded to uniform 640x928 canvas. When using in-game, ensure customer node behind foreground tablecloth and above chair seat, with jeans/shoes visible beneath table; Godot runtime not run here. Some atlas-extraction edges may need final in-engine cleanup."
+}

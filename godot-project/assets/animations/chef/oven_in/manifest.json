@@ -1,0 +1,25 @@
+{
+  "character": "chef",
+  "animation": "oven_in",
+  "approved": true,
+  "status": "approved_integrated",
+  "frames": 4,
+  "fps": 8,
+  "loop": false,
+  "frame_resolution": [
+    768,
+    800
+  ],
+  "alpha": "true RGBA alpha; no background",
+  "sheet_resolution": [
+    2172,
+    724
+  ],
+  "files": [
+    "chef_oven_in_01.png",
+    "chef_oven_in_02.png",
+    "chef_oven_in_03.png",
+    "chef_oven_in_04.png"
+  ],
+  "integration": "Chef oven-in action plays immediately after approved walk, without changing cooking state or timer."
+}
