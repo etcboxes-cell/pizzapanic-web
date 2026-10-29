@@ -1699,7 +1699,7 @@ func build_cinematic_intro() -> void:
     # The transparent top/bottom margins in the approved PNG are intentional.
     # 600 x 338 maintains the image aspect ratio, placing the visible bar
     # around y = 574..672 in the 1280 x 720 logical landscape layout.
-    intro_progress_bar.position = Vector2(340, 445)
+    intro_progress_bar.position = Vector2(340, 355)
     intro_progress_bar.size = Vector2(600, 338)
     intro_progress_bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
     intro_progress_material = ShaderMaterial.new()
