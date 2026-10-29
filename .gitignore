@@ -1,0 +1,10 @@
+godot-project/.godot/
+godot-project/*.pck
+godot-project/*.zip
+.DS_Store
+godot-project/*.wasm
+godot-project/index.wasm
+godot-project/index.pck
+godot-project/index.js
+godot-project/index.html
+godot-project/.godot/
