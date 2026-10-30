@@ -1,0 +1,1 @@
+Alpha 12.26: Purchased table expansions remain visible when replaying earlier levels. Test: buy 4-table expansion, replay Level 4, verify 4 tables; return to Level 6 and verify purchase remains owned. Existing save is reused.

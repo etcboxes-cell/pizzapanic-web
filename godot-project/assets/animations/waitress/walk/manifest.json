@@ -1,0 +1,29 @@
+{
+  "character": "waitress",
+  "animation": "walk",
+  "approved": true,
+  "frames": 8,
+  "fps": 8,
+  "loop": true,
+  "resolution_each": [
+    340,
+    530
+  ],
+  "sheet_resolution": [
+    2720,
+    530
+  ],
+  "alpha": "RGBA; pixels with transparent backgrounds have alpha=0",
+  "base_project": "Alpha 12.68",
+  "notes": "Approved artwork split into 8 masks, without clipping overlap. Source retained. SpriteFrames resource is staged and ready to connect to character game state. Existing gameplay unchanged.",
+  "files": [
+    "waitress_walk_01.png",
+    "waitress_walk_02.png",
+    "waitress_walk_03.png",
+    "waitress_walk_04.png",
+    "waitress_walk_05.png",
+    "waitress_walk_06.png",
+    "waitress_walk_07.png",
+    "waitress_walk_08.png"
+  ]
+}

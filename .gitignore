@@ -1,0 +1,10 @@
+
+# Godot temporary files
+**/.godot/
+.DS_Store
+**/.DS_Store
+
+# Old game exports inside Godot project
+godot-project/*.pck
+godot-project/*.wasm
+godot-project/*.zip

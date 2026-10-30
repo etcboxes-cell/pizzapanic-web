@@ -1,0 +1,25 @@
+{
+  "character": "chef",
+  "animation": "prepare",
+  "approved": true,
+  "status": "approved_integrated",
+  "frames": 4,
+  "fps": 8,
+  "loop": true,
+  "frame_resolution": [
+    768,
+    800
+  ],
+  "alpha": "true RGBA alpha; no background",
+  "sheet_resolution": [
+    2172,
+    724
+  ],
+  "files": [
+    "chef_prepare_01.png",
+    "chef_prepare_02.png",
+    "chef_prepare_03.png",
+    "chef_prepare_04.png"
+  ],
+  "integration": "Chef prep poses appear while ingredient selector active."
+}

@@ -1,0 +1,1 @@
+Alpha 12.84 targeted update: approved Shop and Level Select backgrounds installed. Transparent navigation hit targets added to Shop. Other reported gameplay and UI issues are not yet fully repaired. Godot runtime testing not performed.

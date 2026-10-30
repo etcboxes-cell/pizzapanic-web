@@ -1,0 +1,1 @@
+To use Lilita One for all dynamic game text, download Lilita One Regular from Google Fonts (fonts.google.com/specimen/Lilita+One) and place the .ttf here named LilitaOne-Regular.ttf. The game automatically uses this file for Godot UI theme labels/buttons and code-drawn text. Until added, it uses the standard Godot fallback font. Do not rename the file.

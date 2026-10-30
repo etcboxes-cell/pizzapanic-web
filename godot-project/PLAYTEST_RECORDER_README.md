@@ -1,0 +1,1 @@
+Alpha 12.22: Action timing only. No mouse/cursor movement samples. Each world action click logs elapsed milliseconds since previous action click; task completion logs elapsed milliseconds since most recent click. Existing game state transitions, rewards and session timings remain. Clicks on UI are still logged. Open logs folder from game, upload JSONL for balancing.

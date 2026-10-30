@@ -1,0 +1,86 @@
+asset_id,display_name,category,suggested_png,initial_x,initial_y,width,height,status
+PP-TABLE-01,Table 1,gameplay,table_01.png,302,207,124,80,Awaiting replacement PNG
+PP-CHAIRS-01,Chairs at table 1,gameplay,chairs_01.png,302,207,170,145,Awaiting replacement PNG
+PP-PATIENCE-01,Patience display 1,gameplay,patience_01.png,302,99,130,18,Awaiting replacement PNG
+PP-TABLE-02,Table 2,gameplay,table_02.png,498,207,124,80,Awaiting replacement PNG
+PP-CHAIRS-02,Chairs at table 2,gameplay,chairs_02.png,498,207,170,145,Awaiting replacement PNG
+PP-PATIENCE-02,Patience display 2,gameplay,patience_02.png,498,99,130,18,Awaiting replacement PNG
+PP-TABLE-03,Table 3,gameplay,table_03.png,694,207,124,80,Awaiting replacement PNG
+PP-CHAIRS-03,Chairs at table 3,gameplay,chairs_03.png,694,207,170,145,Awaiting replacement PNG
+PP-PATIENCE-03,Patience display 3,gameplay,patience_03.png,694,99,130,18,Awaiting replacement PNG
+PP-TABLE-04,Table 4,gameplay,table_04.png,890,207,124,80,Awaiting replacement PNG
+PP-CHAIRS-04,Chairs at table 4,gameplay,chairs_04.png,890,207,170,145,Awaiting replacement PNG
+PP-PATIENCE-04,Patience display 4,gameplay,patience_04.png,890,99,130,18,Awaiting replacement PNG
+PP-TABLE-05,Table 5,gameplay,table_05.png,302,438,124,80,Awaiting replacement PNG
+PP-CHAIRS-05,Chairs at table 5,gameplay,chairs_05.png,302,438,170,145,Awaiting replacement PNG
+PP-PATIENCE-05,Patience display 5,gameplay,patience_05.png,302,330,130,18,Awaiting replacement PNG
+PP-TABLE-06,Table 6,gameplay,table_06.png,498,438,124,80,Awaiting replacement PNG
+PP-CHAIRS-06,Chairs at table 6,gameplay,chairs_06.png,498,438,170,145,Awaiting replacement PNG
+PP-PATIENCE-06,Patience display 6,gameplay,patience_06.png,498,330,130,18,Awaiting replacement PNG
+PP-TABLE-07,Table 7,gameplay,table_07.png,694,438,124,80,Awaiting replacement PNG
+PP-CHAIRS-07,Chairs at table 7,gameplay,chairs_07.png,694,438,170,145,Awaiting replacement PNG
+PP-PATIENCE-07,Patience display 7,gameplay,patience_07.png,694,330,130,18,Awaiting replacement PNG
+PP-TABLE-08,Table 8,gameplay,table_08.png,890,438,124,80,Awaiting replacement PNG
+PP-CHAIRS-08,Chairs at table 8,gameplay,chairs_08.png,890,438,170,145,Awaiting replacement PNG
+PP-PATIENCE-08,Patience display 8,gameplay,patience_08.png,890,330,130,18,Awaiting replacement PNG
+PP-WAITRESS,Waitress,gameplay,waitress.png,630,370,90,125,Awaiting replacement PNG
+PP-CHEF,Chef,gameplay,chef.png,1141,592,90,110,Awaiting replacement PNG
+PP-OVEN,Stone oven,gameplay,oven.png,1140,220,105,105,Awaiting replacement PNG
+PP-PICKUP,Pizza pickup bar,gameplay,pickup.png,1140,344,170,70,Awaiting replacement PNG
+PP-ORDER-DISH,Order dish,gameplay,order_dish.png,1140,420,160,70,Awaiting replacement PNG
+PP-SINK,Dishwashing sink,gameplay,sink.png,1140,485,150,75,Awaiting replacement PNG
+PP-QUEUE,Waiting customer queue,gameplay,queue.png,100,340,170,410,Awaiting replacement PNG
+PP-ROBOT,Robot waiter,gameplay,robot.png,800,600,75,95,Awaiting replacement PNG
+PP-FLOOR,Restaurant floor,gameplay,floor.png,640,360,1280,720,Awaiting replacement PNG
+PP-KITCHEN-BG,Kitchen background,gameplay,kitchen_bg.png,1135,360,280,720,Awaiting replacement PNG
+PP-ENTRANCE,Entrance,gameplay,entrance.png,95,540,160,130,Awaiting replacement PNG
+PP-HUD,Gameplay HUD,gameplay,hud.png,640,35,1220,65,Awaiting replacement PNG
+PP-COIN,Coin icon,gameplay,coin.png,80,40,36,36,Awaiting replacement PNG
+PP-STAR,Star icon,gameplay,star.png,175,40,36,36,Awaiting replacement PNG
+PP-PIZZA,Pizza sprite,gameplay,pizza.png,1138,219,90,90,Awaiting replacement PNG
+PP-INGREDIENTS,Ingredient selector,gameplay,ingredients.png,1140,550,260,90,Awaiting replacement PNG
+PP-PAUSE,Pause button,gameplay,pause.png,1230,42,65,60,Awaiting replacement PNG
+PP-MENU-BOARD,Main menu board,gameplay,menu_board.png,650,340,430,620,Awaiting replacement PNG
+PP-PLAY,Play button,gameplay,play.png,650,190,320,72,Awaiting replacement PNG
+PP-RESTAURANT,Restaurant button,gameplay,restaurant.png,650,280,320,72,Awaiting replacement PNG
+PP-UPGRADES,Upgrades button,gameplay,upgrades.png,650,370,320,72,Awaiting replacement PNG
+PP-SETTINGS,Settings button,gameplay,settings.png,650,460,320,72,Awaiting replacement PNG
+PP-HOWTO,How to Play button,gameplay,howto.png,650,550,320,72,Awaiting replacement PNG
+PP-LOGO,Pizza Panic logo,gameplay,logo.png,640,100,460,160,Awaiting replacement PNG
+PP-LEVEL-BOARD,Level selection board,gameplay,level_board.png,790,360,780,650,Awaiting replacement PNG
+PP-RESULTS-BOARD,Results board,gameplay,results_board.png,800,355,580,590,Awaiting replacement PNG
+PP-BUY,Buy button,gameplay,buy.png,980,400,170,60,Awaiting replacement PNG
+PP-REPLAY,Replay button,gameplay,replay.png,670,600,210,75,Awaiting replacement PNG
+PP-NEXT,Next Level button,gameplay,next.png,930,600,210,75,Awaiting replacement PNG
+PP-CLOSE,Close X button,gameplay,close.png,1100,80,65,65,Awaiting replacement PNG
+PP-LOADING,Loading bar,gameplay,loading.png,640,635,500,35,Awaiting replacement PNG
+PP-LEVEL-01,Level tile 1,level_select,level_01.png,620,185,85,85,Awaiting replacement PNG
+PP-LEVEL-02,Level tile 2,level_select,level_02.png,730,185,85,85,Awaiting replacement PNG
+PP-LEVEL-03,Level tile 3,level_select,level_03.png,840,185,85,85,Awaiting replacement PNG
+PP-LEVEL-04,Level tile 4,level_select,level_04.png,950,185,85,85,Awaiting replacement PNG
+PP-LEVEL-05,Level tile 5,level_select,level_05.png,1060,185,85,85,Awaiting replacement PNG
+PP-LEVEL-06,Level tile 6,level_select,level_06.png,620,295,85,85,Awaiting replacement PNG
+PP-LEVEL-07,Level tile 7,level_select,level_07.png,730,295,85,85,Awaiting replacement PNG
+PP-LEVEL-08,Level tile 8,level_select,level_08.png,840,295,85,85,Awaiting replacement PNG
+PP-LEVEL-09,Level tile 9,level_select,level_09.png,950,295,85,85,Awaiting replacement PNG
+PP-LEVEL-10,Level tile 10,level_select,level_10.png,1060,295,85,85,Awaiting replacement PNG
+PP-LEVEL-11,Level tile 11,level_select,level_11.png,620,405,85,85,Awaiting replacement PNG
+PP-LEVEL-12,Level tile 12,level_select,level_12.png,730,405,85,85,Awaiting replacement PNG
+PP-LEVEL-13,Level tile 13,level_select,level_13.png,840,405,85,85,Awaiting replacement PNG
+PP-LEVEL-14,Level tile 14,level_select,level_14.png,950,405,85,85,Awaiting replacement PNG
+PP-LEVEL-15,Level tile 15,level_select,level_15.png,1060,405,85,85,Awaiting replacement PNG
+PP-LEVEL-16,Level tile 16,level_select,level_16.png,620,515,85,85,Awaiting replacement PNG
+PP-LEVEL-17,Level tile 17,level_select,level_17.png,730,515,85,85,Awaiting replacement PNG
+PP-LEVEL-18,Level tile 18,level_select,level_18.png,840,515,85,85,Awaiting replacement PNG
+PP-LEVEL-19,Level tile 19,level_select,level_19.png,950,515,85,85,Awaiting replacement PNG
+PP-LEVEL-20,Level tile 20,level_select,level_20.png,1060,515,85,85,Awaiting replacement PNG
+PP-ING-DOUGH,Dough ingredient,kitchen,ing_dough.png,1120,550,60,60,Awaiting replacement PNG
+PP-ING-SAUCE,Sauce ingredient,kitchen,ing_sauce.png,1120,550,60,60,Awaiting replacement PNG
+PP-ING-CHEESE,Cheese ingredient,kitchen,ing_cheese.png,1120,550,60,60,Awaiting replacement PNG
+PP-ING-PEPPERONI,Pepperoni ingredient,kitchen,ing_pepperoni.png,1120,550,60,60,Awaiting replacement PNG
+PP-ING-MUSHROOM,Mushroom ingredient,kitchen,ing_mushroom.png,1120,550,60,60,Awaiting replacement PNG
+PP-ING-OLIVE,Olive ingredient,kitchen,ing_olive.png,1120,550,60,60,Awaiting replacement PNG
+PP-ING-PEPPER,Pepper ingredient,kitchen,ing_pepper.png,1120,550,60,60,Awaiting replacement PNG
+PP-ING-ONION,Onion ingredient,kitchen,ing_onion.png,1120,550,60,60,Awaiting replacement PNG
+PP-ING-TOMATO,Tomato ingredient,kitchen,ing_tomato.png,1120,550,60,60,Awaiting replacement PNG
+PP-ING-BASIL,Basil ingredient,kitchen,ing_basil.png,1120,550,60,60,Awaiting replacement PNG

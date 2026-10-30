@@ -1,0 +1,1 @@
+Alpha 12.24: Initial queue clock is exactly 80 seconds on normal levels and 70 seconds on Rush Days (5, 10, 15, 20). Initial patience points are calibrated against the existing per-level queue decay, including the Entertainer upgrade. Timer continues when seated; existing quick-service bonuses remain. Campaign save namespace unchanged.

@@ -1,0 +1,8 @@
+Alpha 13.32
+- Corrected Settings row actions: music/effects toggles on first two rows, navigation arrows on bottom two rows; switches shifted 5px left.
+- Moved How to Play five blue tab buttons 2px down.
+- Fixed missing level number text on 20 tiles per page, including locked levels.
+- Re-exported waitress walk frames on larger independent transparent canvases with 50px padding; source sheet not used by gameplay.
+- Added supplied table/pizza/customer/gameplay-background images as references only; NOT yet connected to gameplay.
+- Not yet implemented: redesigned HUD, new typography across all screens, customer eating states, and new waitress carrying/back animations.
+- Godot runtime not playtested in this environment.

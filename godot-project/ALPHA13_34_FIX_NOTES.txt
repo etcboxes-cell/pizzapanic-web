@@ -1,0 +1,1 @@
+Alpha 13.34: Settings switches assigned to Music/SFX (x=789), yellow arrows Follow/Earn. Shop typography resized and aligned. Yellow/red supplied table art installed in actual gameplay asset paths. Existing restaurant background already used by main.gd. Needs gameplay visual testing; not deployed.
