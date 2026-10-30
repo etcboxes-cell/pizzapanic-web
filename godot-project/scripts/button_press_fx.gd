@@ -32,6 +32,7 @@ func _on_node_added(node: Node) -> void:
 func _watch(button: BaseButton) -> void:
     if button.has_meta("no_press_shrink") and bool(button.get_meta("no_press_shrink")):
         return
+    # Tooltip disabled: button.tooltip_text = "" # Suppress hover/click helper feedback across all screens
     var id: int = button.get_instance_id()
     if watched.has(id):
         return

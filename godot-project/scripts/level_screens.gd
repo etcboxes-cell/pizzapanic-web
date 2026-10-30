@@ -32,7 +32,7 @@ func button(parent: Control, folder: String, filename: String, pos: Vector2, dim
     var t := TextureButton.new()
     var art: Texture2D = load("res://assets/ui/" + folder + "/" + filename)
     t.texture_normal = art
-    t.texture_hover = art
+    t.texture_hover = t.texture_normal
     t.texture_pressed = art
     t.ignore_texture_size = true
     t.stretch_mode = TextureButton.STRETCH_SCALE
@@ -72,20 +72,25 @@ func setup(host) -> void:
     pre.clip_contents = true
     add_child(pre)
     image(pre, "pre_level", "pre-level-screen.png", Vector2.ZERO, size)
-    image(pre, "pre_level", "challenge-checklist.png", Vector2(314,285), Vector2(103,100))
-    pre_title = label(pre, "LevelTitle", Vector2(331,214), Vector2(617,42), 26, Color("68310e"), true)
+    image(pre, "pre_level", "challenge-checklist.png", Vector2(277,282), Vector2(126,123))
+    pre_title = label(pre, "LevelTitle", Vector2(335,222), Vector2(625,59), 38, Color.WHITE, true)
+    pre_title.add_theme_color_override("font_outline_color", Color("612408"))
+    pre_title.add_theme_constant_override("outline_size", 8)
     var heading := label(pre, "ChallengeHeading", Vector2(437,275), Vector2(505,42), 28, Color("82370c"))
     heading.text = ""
-    pre_mission = label(pre, "LevelChallenge", Vector2(437,275), Vector2(509,70), 21, Color("5c3216"))
-    pre_description = label(pre, "WhatsNew", Vector2(437,383), Vector2(513,82), 15, Color("79411b"))
-    image(pre, "pre_level", "coin.png", Vector2(291,506), Vector2(65,65))
-    pre_cash = label(pre, "RevenueGoal", Vector2(365,507), Vector2(285,64), 22, Color("693415"))
-    image(pre, "pre_level", "happy-customers.png", Vector2(669,512), Vector2(58,58))
-    pre_parties = label(pre, "PartySchedule", Vector2(735,507), Vector2(282,68), 22, Color("693415"))
-    var start := button(pre, "pre_level", "button-start-level.png", Vector2(443,619), Vector2(394,96), Callable(self,"start_level"))
-    start.tooltip_text = ""
+    pre_mission = label(pre, "LevelChallenge", Vector2(425,290), Vector2(555,78), 29, Color("68310e"))
+    pre_description = label(pre, "WhatsNew", Vector2(425,379), Vector2(560,107), 23, Color("79411b"))
+    image(pre, "pre_level", "coin.png", Vector2(290,521), Vector2(56.25,56.25))
+    pre_cash = label(pre, "RevenueGoal", Vector2(357,517), Vector2(250,66), 28, Color("693415"))
+    image(pre, "pre_level", "happy-customers.png", Vector2(681,522), Vector2(48.75,48.75))
+    pre_parties = label(pre, "PartySchedule", Vector2(742,517), Vector2(245,66), 28, Color("693415"))
+    var display_font: Font = load("res://assets/fonts/LilitaOne-Regular.ttf")
+    for item in [pre_title, pre_mission, pre_description, pre_cash, pre_parties]:
+        item.add_theme_font_override("font", display_font)
+    var start := button(pre, "pre_level", "button-start-level.png", Vector2(443,616), Vector2(394,96), Callable(self,"start_level"))
+    # Tooltip disabled: start.tooltip_text = ""
     var close := button(pre, "pre_level", "close-button.png", Vector2(1008, 141), Vector2(81,80), Callable(self,"close_pre"))
-    close.tooltip_text = ""
+    # Tooltip disabled: close.tooltip_text = ""
     pre.hide()
 
     selector = Control.new()
@@ -99,13 +104,13 @@ func setup(host) -> void:
     image(selector,"level_select","coin-bank.png",Vector2(594,15),Vector2(239,72))
     image(selector,"level_select","star-counter.png",Vector2(860,15),Vector2(234,72))
     # Coin button added last so it receives clicks above counters and labels.
-    coin_label = label(selector,"Wallet",Vector2(668,31),Vector2(136,48),29,Color.WHITE,true)
+    coin_label = label(selector,"Wallet",Vector2(690,25),Vector2(118,60),43,Color.WHITE,true)
     coin_label.add_theme_color_override("font_outline_color",Color("311b11"))
     coin_label.add_theme_constant_override("outline_size",5)
-    stars_label = label(selector,"ChapterStars",Vector2(945,31),Vector2(136,48),28,Color.WHITE,true)
+    stars_label = label(selector,"ChapterStars",Vector2(945,25),Vector2(136,60),42,Color.WHITE,true)
     stars_label.add_theme_color_override("font_outline_color",Color("311b11"))
     stars_label.add_theme_constant_override("outline_size",5)
-    button(selector,"level_select","mini-games.png",Vector2(1128,9),Vector2(106,77),Callable(self,"open_mini_games")).tooltip_text = "Mini-games unlock after Level 20"
+    button(selector,"level_select","mini-games.png",Vector2(1128,9),Vector2(106,77),Callable(self,"open_mini_games"))
     chapter_label = label(selector,"PageTitle",Vector2(721,551),Vector2(423,29),18,Color("fff4d2"),true)
     cells = Control.new()
     cells.name = "LevelButtons"
@@ -114,11 +119,13 @@ func setup(host) -> void:
     back_arrow = button(selector,"level_select","how-to-left.png",Vector2(624,373),Vector2(55,55),Callable(self,"previous_page"))
     next_arrow = button(selector,"level_select","how-to-right.png",Vector2(1207,373),Vector2(57,55),Callable(self,"next_page"))
     notice = label(selector,"SelectionHint",Vector2(700,625),Vector2(470,34),15,Color("fff2c6"),true)
-    var home := button(selector,"level_select","main-menu-button.png",Vector2(852,650),Vector2(155,52),Callable(game,"show_main_menu"))
-    home.tooltip_text = ""
-    var coin_plus := button(selector,"level_select","add-coins.png",Vector2(790,20),Vector2(66,66),Callable(self,"open_coin_preview"))
+    var home := button(selector,"level_select","main-menu-button.png",Vector2(864,644),Vector2(194,65),Callable(game,"show_main_menu"))
+    # Tooltip disabled: home.tooltip_text = ""
+    var coin_plus := button(selector,"level_select","add-coins.png",Vector2(796.6,26.6),Vector2(52.8,52.8),Callable(self,"open_coin_preview"))
     coin_plus.name = "EarnCoinsPlus"
-    coin_plus.tooltip_text = ""
+    # Keep the supplied coin-bank artwork fully visible; retain the invisible Coin Shop hit area.
+    coin_plus.modulate.a = 1.0
+    # Tooltip disabled: coin_plus.tooltip_text = ""
     coin_plus.z_index = 20
     coin_plus.mouse_filter = Control.MOUSE_FILTER_STOP
     selector.hide()
@@ -140,7 +147,7 @@ func show_pre() -> void:
         if last_space > 90: summary = summary.substr(0,last_space)
         summary += "…"
     pre_description.text = summary
-    pre_description.tooltip_text = ""
+    # Tooltip disabled: pre_description.tooltip_text = ""
     # party_cap means scheduled PARTIES, not individual people.
     pre_cash.text = "Earn %d coins" % int(game.call("cfg","goal"))
     pre_parties.text = "%d parties arriving" % int(game.call("cfg","party_cap"))
@@ -169,7 +176,7 @@ func refresh_select() -> void:
         earned += clampi(int(history.get(str(n),0)),0,3)
     coin_label.text = str(game.get("wallet_coins"))
     stars_label.text = "%d/60" % earned
-    stars_label.tooltip_text = ""
+    # Tooltip disabled: stars_label.tooltip_text = ""
     chapter_label.text = "" # Remove text overlapping level tiles 17 and 18
     notice.text = ""
     for old in cells.get_children(): old.queue_free()
@@ -197,7 +204,7 @@ func refresh_select() -> void:
         th = square_side
         var tile := button(cells,"level_select",sprite,Vector2(px,py),Vector2(tw,th),Callable(self,"choose_level").bind(id))
         tile.disabled = not available
-        tile.tooltip_text = "" # No selection feedback popup
+        # Tooltip disabled: tile.tooltip_text = "" # No selection feedback popup
         var num := label(cells,"Level_%d" % (id + 1),Vector2(px,py),Vector2(tw,th),44,Color.WHITE,true)
         num.text = str(id + 1)
         num.add_theme_color_override("font_outline_color",Color("37211f"))

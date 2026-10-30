@@ -15,8 +15,8 @@ func _scan(node: Node) -> void:
     if node is Button and not watched.has(node.get_instance_id()):
         var button: Button = node as Button
         watched[button.get_instance_id()] = {"node": button, "hover": false}
-        button.mouse_entered.connect(_set_hover.bind(button, true))
-        button.mouse_exited.connect(_set_hover.bind(button, false))
+        # No mouse-over feedback.
+        # No mouse-over feedback.
     for child in node.get_children():
         _scan(child)
 
@@ -47,8 +47,7 @@ func _process(delta: float) -> void:
         # Soft highlighted CTA glow; mouse feedback stays inside original button area.
         var hovered: bool = entry["hover"] and not btn.disabled
         btn.modulate = Color(1.0, 1.0, 1.0, 1.0) if btn.disabled else Color(1.0, 1.0, 1.0, 0.94 + 0.06 * sin(phase + visible_index * 0.8))
-        if hovered:
-            btn.modulate = Color(1.13, 1.12, 1.03, 1.0)
+        # Hover does not change appearance.
         visible_index += 1
     # Three independent visible movements per menu: title pulse, button glow, logo drips.
     for name in ["MainMenu", "SettingsPage", "HowToPlayPage", "RestaurantPage"]:

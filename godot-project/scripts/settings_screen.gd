@@ -13,7 +13,7 @@ const INSTAGRAM_URL := ""
 func texture(parent: Control, filename: String, pos: Vector2, dimensions: Vector2) -> TextureRect:
     var view := TextureRect.new()
     view.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-    view.stretch_mode = TextureRect.STRETCH_SCALE
+    view.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
     view.texture = load(ASSETS + filename)
     view.custom_minimum_size = Vector2.ZERO
     view.position = pos
@@ -27,7 +27,7 @@ func picture_button(parent: Control, filename: String, pos: Vector2, dimensions:
     var art: Texture2D = load(ASSETS + filename)
     view.texture_normal = art
     view.texture_pressed = art
-    view.texture_hover = art
+    view.texture_hover = view.texture_normal
     view.ignore_texture_size = true
     view.stretch_mode = TextureButton.STRETCH_SCALE
     view.position = pos
@@ -66,20 +66,31 @@ func setup(host: Node) -> void:
     z_index = 93
     clip_contents = true
     mouse_filter = Control.MOUSE_FILTER_STOP
-    texture(self, "settings-screen.png", Vector2.ZERO, UI_SIZE)
-    # Labels are part of the approved background artwork; avoid duplicating them.
-    # Correct row-to-action mapping. Audio switches are shifted 5 px left.
-    music_switch = picture_button(self, "switch-off.png", Vector2(784, 304), Vector2(107,56), Callable(self,"toggle_music"))
-    music_switch.set_meta("no_press_shrink", true)
-    effects_switch = picture_button(self, "switch-off.png", Vector2(784, 390), Vector2(107,56), Callable(self,"toggle_effects"))
-    effects_switch.set_meta("no_press_shrink", true)
-    picture_button(self, "go-to-button.png", Vector2(783.5, 470), Vector2(112,79), Callable(self,"follow_us")).tooltip_text = "Open Pizza Panic on Instagram"
-    picture_button(self, "go-to-button.png", Vector2(783.5, 563), Vector2(112,79), Callable(self,"earn_coins")).tooltip_text = "Watch an optional rewarded advertisement (+50 coins if completed)"
-    status_label = label(self, "Feedback", "", Vector2(313, 627), Vector2(635, 40), 16)
+    texture(self, "settings-screen.png", Vector2(2, 2), UI_SIZE - Vector2(4, 4))
+    # Interactive rows are placed on the blank approved board (not baked into art).
+    # Alpha 13.96: Settings icons, switches and action buttons increased 20%, centered in place.
+    # Illustrated icons replace the old text glyphs; each row retains its original action.
+    var rows := [
+        ["music-icon.png", "Music", 284.0],
+        ["sound-icon.png", "Sound Effects", 374.0],
+        ["instagram-icon.png", "Follow Us", 464.0],
+        ["coin-icon.png", "Earn More Coins", 554.0],
+    ]
+    for item in rows:
+        var y: float = item[2]
+        var icon_view := texture(self, item[0], Vector2(345.68, y - 9.32), Vector2(74.64, 74.64))
+        icon_view.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+        label(self, "Title" + str(int(y)), item[1], Vector2(425, y), Vector2(330, 54), 31)
+    music_switch = picture_button(self, "switch-off.png", Vector2(779.8, 282.02), Vector2(110.4,57.96), Callable(self,"toggle_music"))
+    effects_switch = picture_button(self, "switch-off.png", Vector2(779.8, 372.02), Vector2(110.4,57.96), Callable(self,"toggle_effects"))
+    picture_button(self, "go-to-button.png", Vector2(790.632, 457.932), Vector2(92.736,65.136), Callable(self,"follow_us"))
+    picture_button(self, "go-to-button.png", Vector2(790.632, 547.932), Vector2(92.736,65.136), Callable(self,"earn_coins"))
+    status_label = label(self, "Feedback", "", Vector2(333, 615), Vector2(600, 34), 15)
     status_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-    picture_button(self, "close.png", Vector2(1041, 191), Vector2(81,80), Callable(self,"close_settings")).tooltip_text = "Back to Main Menu"
-    var build_label := label(self, "BuildVersion", "ALPHA 13.39", Vector2(1034, 644), Vector2(135, 24), 13)
-    build_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+    status_label.visible = false # No button feedback text
+    # Visible, clickable close icon at the top-right of the settings board.
+    var close_area := picture_button(self, "close.png", Vector2(1060, 192), Vector2(70, 70), Callable(self, "close_settings"))
+    # Tooltip disabled: close_area.tooltip_text = "Back to Main Menu"
     refresh()
     hide()
 

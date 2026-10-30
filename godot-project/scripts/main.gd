@@ -6,7 +6,7 @@ const W := 1280.0
 const H := 720.0
 # Ten individually tuned restaurant shifts. Level 1 retains its original rules.
 const LEVELS := [
-    {"name":"Grand Opening", "goal":80,"time":80.0,"party_cap":8,"spawn":7.2,"queue_decay":1.05,"table_decay":1.0,"cook":1.0,"vip_every":7,"bonus":0,"challenge":"Serve 4 guests and learn the restaurant workflow","kind":"guests","target":4,"brief":"WELCOME! Practice seating, orders, cooking, serving, payment and cleanup. Arrivals are spaced so you can learn. Mistakes are recoverable."},
+    {"name":"Grand Opening", "goal":80,"time":80.0,"party_cap":8,"spawn":7.2,"queue_decay":1.05,"table_decay":1.0,"cook":1.0,"vip_every":7,"bonus":0,"challenge":"Serve 4 guests and learn the restaurant workflow","kind":"guests","target":4,"brief":"WELCOME! Practice seating, orders, cooking, serving, payment and cleanup. TIP: The faster you take care of customers' requests, the more money you earn!"},
     {"name":"Couples & Friends", "goal":80,"time":85.0,"party_cap":9,"spawn":6.3,"queue_decay":1.08,"table_decay":1.0,"cook":1.0,"vip_every":7,"bonus":0,"challenge":"Serve 7 guests from parties of one or two","kind":"guests","target":7,"brief":"Only solo customers and couples arrive today. All three starter tables are yellow with two seats. Starting on Level 3 you can pay to convert any available yellow table to red, adding two seats."},
     {"name":"Bigger Parties", "goal":85,"time":90.0,"party_cap":10,"spawn":6.4,"queue_decay":1.10,"table_decay":1.0,"cook":1.0,"vip_every":7,"bonus":0,"challenge":"Clean 3 tables with no more than 3 dirty at once","kind":"clean","target":3,"brief":"NEW: Buy a RED TABLE conversion in the STORE (150 coins per table). Groups of three and four begin once you own at least one red table. You can convert additional yellow tables whenever you have enough saved coins. Missions are optional."},
     {"name":"VIP Visit", "goal":85,"time":95.0,"party_cap":11,"spawn":5.8,"queue_decay":1.12,"table_decay":1.0,"cook":1.0,"vip_every":3,"bonus":0,"challenge":"Serve 1 VIP party","kind":"vip","target":1,"brief":"VIP parties have less patience but pay more. Prioritize their orders and collect payments."},
@@ -319,18 +319,18 @@ var upgrade_step: int = 0
 # Each table is converted separately, permanently, and only by choice.
 # Keep the historic 'chairs' save key for Table 7 backwards compatibility.
 const STORE_ITEMS := [
-    {"id":"chairs_6", "name":"Convert Table 6 to RED (4 seats)", "cost":150, "level":3, "details":"Upgrade yellow Table 6 from 2 to 4 seats.", "active":true},
-    {"id":"chairs", "name":"Convert Table 7 to RED (4 seats)", "cost":150, "level":3, "details":"Upgrade yellow Table 7 from 2 to 4 seats.", "active":true},
-    {"id":"chairs_8", "name":"Convert Table 8 to RED (4 seats)", "cost":150, "level":3, "details":"Upgrade yellow Table 8 from 2 to 4 seats.", "active":true},
-    {"id":"expand4", "name":"Expansion: Fourth Yellow Table", "cost":350, "level":6, "details":"Grow from 3 to 4 tables. New tables begin yellow (2 seats).", "active":true},
-    {"id":"chairs_4", "name":"Convert Table 4 to RED (4 seats)", "cost":150, "level":6, "details":"Requires the fourth-table expansion; adds two seats.", "active":true},
-    {"id":"chairs_3", "name":"Convert Table 3 to RED (4 seats)", "cost":150, "level":11, "details":"Requires the fifth-table expansion; adds two seats.", "active":true},
-    {"id":"chairs_5", "name":"Convert Table 5 to RED (4 seats)", "cost":150, "level":16, "details":"Requires the sixth-table expansion; adds two seats.", "active":true},
-    {"id":"expand5", "name":"Expansion: Fifth Table", "cost":500, "level":11, "details":"Add exactly ONE table: grow from four to five tables.", "active":true},
-    {"id":"expand6", "name":"Expansion: Sixth Table", "cost":650, "level":16, "details":"Add exactly ONE table: grow from five to six tables.", "active":true},
-    {"id":"tray", "name":"Four-Pizza Serving Tray", "cost":450, "level":13, "details":"Optional: carry up to 4 pizzas at once; fixed one-time price, never empties your whole wallet.", "active":true},
+    {"id":"chairs_6", "name":"Convert Table 6 to RED (4 seats)", "cost":300, "level":3, "details":"Upgrade yellow Table 6 from 2 to 4 seats.", "active":true},
+    {"id":"chairs", "name":"Convert Table 7 to RED (4 seats)", "cost":300, "level":3, "details":"Upgrade yellow Table 7 from 2 to 4 seats.", "active":true},
+    {"id":"chairs_8", "name":"Convert Table 8 to RED (4 seats)", "cost":300, "level":3, "details":"Upgrade yellow Table 8 from 2 to 4 seats.", "active":true},
+    {"id":"expand4", "name":"Expansion: Fourth Yellow Table", "cost":300, "level":6, "details":"Grow from 3 to 4 tables. New tables begin yellow (2 seats).", "active":true},
+    {"id":"chairs_4", "name":"Convert Table 4 to RED (4 seats)", "cost":300, "level":6, "details":"Requires the fourth-table expansion; adds two seats.", "active":true},
+    {"id":"chairs_3", "name":"Convert Table 3 to RED (4 seats)", "cost":300, "level":11, "details":"Requires the fifth-table expansion; adds two seats.", "active":true},
+    {"id":"chairs_5", "name":"Convert Table 5 to RED (4 seats)", "cost":300, "level":16, "details":"Requires the sixth-table expansion; adds two seats.", "active":true},
+    {"id":"expand5", "name":"Expansion: Fifth Table", "cost":300, "level":11, "details":"Add exactly ONE table: grow from four to five tables.", "active":true},
+    {"id":"expand6", "name":"Expansion: Sixth Table", "cost":300, "level":16, "details":"Add exactly ONE table: grow from five to six tables.", "active":true},
+    {"id":"tray", "name":"Four-Pizza Serving Tray", "cost":500, "level":13, "details":"Optional: carry up to 4 pizzas at once; fixed one-time price, never empties your whole wallet.", "active":true},
     {"id":"cart3", "name":"Small Dish Cart (3)", "cost":400, "level":15, "details":"Collect up to three dirty dish pickups before washing.", "active":true},
-    {"id":"cart4", "name":"Large Dish Cart (4)", "cost":450, "level":20, "details":"Collect up to four dirty dish pickups. Requires Small Dish Cart.", "active":true},
+    {"id":"cart4", "name":"Large Dish Cart (4)", "cost":500, "level":20, "details":"Collect up to four dirty dish pickups. Requires Small Dish Cart.", "active":true},
     {"id":"oven", "name":"Turbo Oven", "cost":600, "level":15, "details":"Cook any pizza in 3 seconds (standard oven 5s, with level modifiers).", "active":true},
     {"id":"robot", "name":"Robot Waiter", "cost":2300, "level":16, "details":"Automatically picks up and serves ready pizzas. Does not select toppings.", "active":true},
     {"id":"robot_speed", "name":"Robot Speed Upgrade", "cost":850, "level":18, "details":"Robot moves 30% faster. Requires Robot Waiter.", "active":true},
@@ -466,7 +466,7 @@ func affordable_upgrade_count() -> int:
         var id: String = str(item["id"])
         if not bool(item["active"]) or has_upgrade(id) or current_level + 1 < int(item["level"]) or wallet_coins < int(item["cost"]) or not table_conversion_available(id):
             continue
-        if (id == "expand5" and not has_upgrade("expand4")) or (id == "expand6" and not has_upgrade("expand5")) or (id == "cart4" and not has_upgrade("cart3")) or (id.begins_with("robot_") and not has_upgrade("robot")):
+        if (id == "expand5" and not has_upgrade("expand4")) or (id == "expand6" and not has_upgrade("expand5")) or (id.begins_with("robot_") and not has_upgrade("robot")):
             continue
         count += 1
     return count
@@ -490,6 +490,16 @@ func shop_card_data(entry: String) -> Dictionary:
     var short_name: String = ""
     var short_details: String = ""
     var icon_name: String = "chair-upgrade.png"
+    if entry == "expansion_group":
+        entry_id = ""
+        for key in ["expand4", "expand5", "expand6"]:
+            if not has_upgrade(key):
+                entry_id = key
+                break
+        if entry_id == "":
+            return {"id":"", "name":"Table Expansion", "details":"All table expansions purchased.", "cost":0, "icon":"chair-upgrade.png", "can_buy":false, "status":"OWNED"}
+        short_name = "Table Expansion"
+        short_details = "Unlock the next restaurant table"
     if entry == "chairs_group":
         entry_id = ""
         var candidates := ["chairs_6", "chairs", "chairs_8", "chairs_4", "chairs_3", "chairs_5"]
@@ -519,7 +529,7 @@ func shop_card_data(entry: String) -> Dictionary:
         var bought: bool = has_upgrade(entry_id)
         var allowed_level: bool = current_level + 1 >= int(item["level"])
         var active: bool = bool(item["active"])
-        var prereq: bool = (entry_id == "expand5" and not has_upgrade("expand4")) or (entry_id == "expand6" and not has_upgrade("expand5")) or (entry_id == "cart4" and not has_upgrade("cart3")) or (entry_id.begins_with("robot_") and not has_upgrade("robot")) or not table_conversion_available(entry_id)
+        var prereq: bool = (entry_id == "expand5" and not has_upgrade("expand4")) or (entry_id == "expand6" and not has_upgrade("expand5")) or (entry_id.begins_with("robot_") and not has_upgrade("robot")) or not table_conversion_available(entry_id)
         var available: bool = active and not bought and allowed_level and not prereq and wallet_coins >= price
         var notice: String = ""
         if bought: notice = "OWNED"
@@ -539,8 +549,8 @@ func shop_card_data(entry: String) -> Dictionary:
                 text_details = "Carry up to 3 dirty dishes"
                 icon_name = "dish-tray-upgrade.png"
             "cart4":
-                text_name = "Dish Cart +"
-                text_details = "Carry 4 dirty dish pickups"
+                text_name = "Dish Tray"
+                text_details = "Carry up to 4 dirty dishes"
                 icon_name = "dish-tray-upgrade.png"
             "oven":
                 text_name = "Turbo Oven"
@@ -745,6 +755,7 @@ func create_shop_ui() -> void:
     root_ui.add_child(shop_panel)
     shop_panel.call("setup",self)
     shop_feedback = shop_panel.get("feedback") as Label
+    shop_feedback.visible = false # No button/purchase feedback anywhere in Shop
     shop_panel.hide()
     var extras_row := HBoxContainer.new()
     var briefing_content: VBoxContainer = start_panel.get_child(0) as VBoxContainer
@@ -982,6 +993,19 @@ const RESTAURANT_BG_PATH := "res://assets/replacements/backgrounds/game-play-scr
 var table_layout: Dictionary = {}
 var table_sprite_cache: Dictionary = {}
 var restaurant_background: Texture2D = null
+var closed_door_sign: Texture2D = preload("res://assets/ui/closed-door-sign.png")
+var table_action_icons: Dictionary = {
+    "order": preload("res://assets/ui/table_cues/order_menu.png"),
+    "pay": preload("res://assets/ui/table_cues/collect_cash.png"),
+    "dirty": preload("res://assets/ui/table_cues/dirty_dishes.png")
+}
+
+# Alpha 13.94: queue-only standing character artwork; seated sprites stay disabled.
+var queue_standing_sprites: Array = []
+# Front of the queue is the entrance-side end of the carpet (bottom of screen).
+# FIFO data: oldest party stays at queue[0]. Visual slots reverse as new parties arrive.
+const QUEUE_SPOTS: Array[Vector2] = [Vector2(74, 650), Vector2(69, 565), Vector2(75, 480), Vector2(121, 395), Vector2(188, 310)]
+var party_patience_bubble: Texture2D = preload("res://assets/ui/waiting_party_bubble.png")
 var customer_one_poses: Array[Texture2D] = []
 var pizza_eating_frames: Array = []
 
@@ -998,6 +1022,13 @@ func load_mapped_table_art() -> void:
                         TABLE_POS[game_index] = Vector2(float(row.get("x", 0)), float(row.get("y", 0)))
     if ResourceLoader.exists(RESTAURANT_BG_PATH):
         restaurant_background = load(RESTAURANT_BG_PATH) as Texture2D
+    queue_standing_sprites.clear()
+    for customer_id in range(1, 7):
+        var poses: Array[Texture2D] = []
+        for mood in ["happy", "impatient"]:
+            var path: String = "res://assets/animations/customers/queue_standing/customer_%02d_%s.png" % [customer_id, mood]
+            poses.append(load(path) as Texture2D if ResourceLoader.exists(path) else null)
+        queue_standing_sprites.append(poses)
     for pose_id in range(1, 13):
         var pose_path: String = "res://assets/animations/customers/customer_01/pose_%02d.png" % pose_id
         if ResourceLoader.exists(pose_path):
@@ -1076,7 +1107,7 @@ var chain := 0
 var running := false
 var shift_paused: bool = false
 var pause_button: TextureButton
-var pause_overlay: PanelContainer
+var pause_overlay: Panel
 var chef_popup_hidden_for_pause: bool = false
 var finished := false
 var message := "Tap START to open your restaurant!"
@@ -1698,8 +1729,13 @@ func build_cinematic_intro() -> void:
     intro_progress_bar.stretch_mode = TextureRect.STRETCH_SCALE
     # The transparent top/bottom margins in the approved PNG are intentional.
     # 600 x 338 maintains the image aspect ratio, placing the visible bar
+<<<<<<< HEAD
     # around y = 574..672 in the 1280 x 720 logical landscape layout.
     intro_progress_bar.position = Vector2(340, 355)
+=======
+    # around y = 614..712 in the 1280 x 720 logical landscape layout, below the logo.
+    intro_progress_bar.position = Vector2(340, 430)
+>>>>>>> 4929a3c (Pizza Panic Alpha 14.17)
     intro_progress_bar.size = Vector2(600, 338)
     intro_progress_bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
     intro_progress_material = ShaderMaterial.new()
@@ -1750,7 +1786,7 @@ func show_opening_page(page: int) -> void:
     intro_progress_bar.visible = page == 0
     intro_progress_material.set_shader_parameter("fill_ratio", 0.0)
     intro_next_button.visible = page == 1 or page == 2
-    intro_next_button.tooltip_text = "Continue to Main Menu" if page == 2 else "Next story"
+    # Tooltip disabled: intro_next_button.tooltip_text = "Continue to Main Menu" if page == 2 else "Next story"
     intro_layer.show()
     queue_redraw()
 
@@ -1912,7 +1948,7 @@ func create_navigation_pages() -> void:
         image_button.name = str(entry[0])
         var texture: Texture2D = load(str(entry[1]))
         image_button.texture_normal = texture
-        image_button.texture_hover = texture
+        image_button.texture_hover = image_button.texture_normal
         image_button.texture_pressed = texture
         image_button.ignore_texture_size = true
         image_button.stretch_mode = TextureButton.STRETCH_SCALE
@@ -1921,7 +1957,7 @@ func create_navigation_pages() -> void:
         image_button.size = main_button_rects[i].size
         image_button.focus_mode = Control.FOCUS_ALL
         image_button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-        image_button.tooltip_text = str(entry[3])
+        # Tooltip disabled: image_button.tooltip_text = str(entry[3])
         image_button.pressed.connect(open_menu_destination.bind(str(entry[2])))
         menu_panel.add_child(image_button)
     root_ui.add_child(menu_panel)
@@ -2032,11 +2068,11 @@ func build_how_to_play_page() -> void:
         tab.name = topics[i] + "Tab"
         var texture: Texture2D = load("res://assets/ui/how_to_play/" + files[i])
         tab.texture_normal = texture
-        tab.texture_hover = texture
+        tab.texture_hover = tab.texture_normal
         tab.texture_pressed = texture
         tab.ignore_texture_size = true
         tab.stretch_mode = TextureButton.STRETCH_SCALE
-        tab.position = Vector2(199.0 * W / 3200.0, photoshop_ys[i] * H / 1806.0 - 1.0)
+        tab.position = Vector2(199.0 * W / 3200.0, photoshop_ys[i] * H / 1806.0 - (4.0 if i < 2 else 1.0))
         tab.size = Vector2(640.0 * W / 3200.0, 182.0 * H / 1806.0)
         tab.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
         tab.pressed.connect(select_help_topic.bind(topics[i]))
@@ -2065,11 +2101,11 @@ func build_how_to_play_page() -> void:
     close.name = "HowToPlayClose"
     var close_tex: Texture2D = load("res://assets/ui/how_to_play/close-button.png")
     close.texture_normal = close_tex
-    close.texture_hover = close_tex
+    close.texture_hover = close.texture_normal
     close.texture_pressed = close_tex
     close.ignore_texture_size = true
     close.stretch_mode = TextureButton.STRETCH_SCALE
-    close.position = Vector2(1103, 196)
+    close.position = Vector2(1103, 201)
     close.size = Vector2(81, 80)
     close.pressed.connect(show_main_menu)
     help_page.add_child(close)
@@ -2251,50 +2287,68 @@ func create_pause_ui() -> void:
     root_ui.add_child(pause_button)
     pause_button.hide()
 
-    pause_overlay = PanelContainer.new()
-    pause_overlay.position = Vector2(265, 110)
-    pause_overlay.size = Vector2(750, 500)
+    # Full-screen shade blocks gameplay input while paused.
+    var pause_shade := ColorRect.new()
+    pause_shade.name = "PauseShade"
+    pause_shade.position = Vector2.ZERO
+    pause_shade.size = Vector2(1280, 720)
+    pause_shade.color = Color(0.05, 0.025, 0.015, 0.66)
+    pause_shade.mouse_filter = Control.MOUSE_FILTER_STOP
+    pause_shade.z_index = 199
+    root_ui.add_child(pause_shade)
+    pause_shade.hide()
+
+    # Panel (not PanelContainer) respects explicit positions/sizes of the art buttons.
+    pause_overlay = Panel.new()
+    pause_overlay.position = Vector2(320, 155)
+    pause_overlay.size = Vector2(640, 410)
     pause_overlay.z_index = 200
     pause_overlay.mouse_filter = Control.MOUSE_FILTER_STOP
     var panel_style := StyleBoxTexture.new()
-    panel_style.texture = load("res://assets/ui/gameplay/pause_wood_board.png")
-    panel_style.texture_margin_left = 85.0
-    panel_style.texture_margin_right = 85.0
-    panel_style.texture_margin_top = 85.0
-    panel_style.texture_margin_bottom = 85.0
-    panel_style.content_margin_left = 86.0
-    panel_style.content_margin_right = 86.0
-    panel_style.content_margin_top = 75.0
-    panel_style.content_margin_bottom = 72.0
+    panel_style.texture = preload("res://assets/ui/gameplay/pause_wood_board.png")
+    panel_style.texture_margin_left = 40.0
+    panel_style.texture_margin_right = 40.0
+    panel_style.texture_margin_top = 40.0
+    panel_style.texture_margin_bottom = 40.0
+    panel_style.content_margin_left = 0.0
+    panel_style.content_margin_right = 0.0
+    panel_style.content_margin_top = 0.0
+    panel_style.content_margin_bottom = 0.0
     pause_overlay.add_theme_stylebox_override("panel", panel_style)
-    var body := VBoxContainer.new()
-    body.add_theme_constant_override("separation", 20)
-    pause_overlay.add_child(body)
     var title := Label.new()
-    title.text = "SHIFT PAUSED"
+    title.text = "GAME PAUSED"
+    title.position = Vector2(70, 58)
+    title.size = Vector2(500, 56)
     title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-    title.add_theme_font_size_override("font_size", 38)
+    title.add_theme_font_size_override("font_size", 39)
     title.add_theme_color_override("font_color", Color("5b2b11"))
-    body.add_child(title)
+    pause_overlay.add_child(title)
     var note := Label.new()
-    note.text = "The clock, customers, chef and waitress are paused."
+    note.text = "Ready to get back to the kitchen?"
+    note.position = Vector2(55, 123)
+    note.size = Vector2(530, 35)
     note.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-    note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-    note.add_theme_font_size_override("font_size", 19)
+    note.add_theme_font_size_override("font_size", 20)
     note.add_theme_color_override("font_color", Color("5b2b11"))
-    body.add_child(note)
-    var resume_button := Button.new()
-    resume_button.text = "RESUME LEVEL"
-    resume_button.custom_minimum_size = Vector2(0, 74)
-    resume_button.add_theme_font_size_override("font_size", 25)
+    pause_overlay.add_child(note)
+    var resume_button := TextureButton.new()
+    resume_button.texture_normal = preload("res://assets/ui/gameplay/resume-button.png")
+    resume_button.ignore_texture_size = true
+    resume_button.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
+    resume_button.position = Vector2(180, 177)
+    resume_button.size = Vector2(280, 64)
+    resume_button.mouse_filter = Control.MOUSE_FILTER_STOP
     resume_button.pressed.connect(resume_shift)
-    body.add_child(resume_button)
-    var exit_button := Button.new()
-    exit_button.text = "EXIT LEVEL - CHOOSE DAY"
-    exit_button.custom_minimum_size = Vector2(0, 74)
-    exit_button.add_theme_font_size_override("font_size", 22)
+    pause_overlay.add_child(resume_button)
+    var exit_button := TextureButton.new()
+    exit_button.texture_normal = preload("res://assets/ui/gameplay/exit-level-paused.png")
+    exit_button.ignore_texture_size = true
+    exit_button.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
+    exit_button.position = Vector2(125, 266)
+    exit_button.size = Vector2(390, 64)
+    exit_button.mouse_filter = Control.MOUSE_FILTER_STOP
     exit_button.pressed.connect(exit_shift_to_days)
-    body.add_child(exit_button)
+    pause_overlay.add_child(exit_button)
     root_ui.add_child(pause_overlay)
     pause_overlay.hide()
 
@@ -2307,6 +2361,7 @@ func toggle_pause() -> void:
         chef_popup_hidden_for_pause = chef_overlay != null and chef_overlay.visible
         if chef_popup_hidden_for_pause:
             chef_overlay.hide()
+        root_ui.get_node("PauseShade").show()
         pause_overlay.show()
         pause_button.hide()
         for player in music_players: player.stream_paused = true
@@ -2317,6 +2372,7 @@ func resume_shift() -> void:
     if not running: return
     shift_paused = false
     pause_overlay.hide()
+    root_ui.get_node("PauseShade").hide()
     if chef_popup_hidden_for_pause and chef_overlay != null and chef_active_table >= 0 and chef_active_table < tables.size() and str(tables[chef_active_table]["state"]) == "chef_wait" and not tables[chef_active_table]["party"].is_empty():
         chef_overlay.show()
     elif chef_popup_hidden_for_pause:
@@ -2334,6 +2390,7 @@ func exit_shift_to_days() -> void:
     shift_paused = false
     chef_popup_hidden_for_pause = false
     pause_overlay.hide()
+    root_ui.get_node("PauseShade").hide()
     pause_button.hide()
     for player in music_players:
         player.stream_paused = false
@@ -2378,7 +2435,7 @@ func _level_complete_button(button_name: String, filename: String, at: Vector2, 
     button.name = button_name
     var texture: Texture2D = load("res://assets/ui/level_complete/" + filename)
     button.texture_normal = texture
-    button.texture_hover = texture
+    button.texture_hover = button.texture_normal
     button.texture_pressed = texture
     button.ignore_texture_size = true
     button.stretch_mode = TextureButton.STRETCH_SCALE
@@ -2408,7 +2465,7 @@ func create_level_complete_ui() -> void:
     background.position = Vector2.ZERO
     background.size = Vector2(W, H)
     background.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-    background.stretch_mode = TextureRect.STRETCH_SCALE
+    background.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
     background.size = Vector2(W, H)
     background.mouse_filter = Control.MOUSE_FILTER_IGNORE
     level_complete_screen.add_child(background)
@@ -2418,23 +2475,23 @@ func create_level_complete_ui() -> void:
         var star := TextureRect.new()
         star.name = "Star%d" % (star_index + 1)
         star.texture = gray
-        star.position = Vector2(665 + star_index * 114, 288)
-        star.size = Vector2(103, 98)
+        star.position = Vector2(763 + star_index * 92, 260)
+        star.size = Vector2(80, 76)
         star.pivot_offset = star.size * 0.5
         star.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
         star.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-        star.size = Vector2(103, 98)
+        star.size = Vector2(80, 76)
         star.mouse_filter = Control.MOUSE_FILTER_IGNORE
         level_complete_screen.add_child(star)
         level_complete_stars.append(star)
 
     # Lower green counters in the approved art: coins and guests served / arrived.
-    level_complete_coin_value = _level_complete_label("EarnedCoins", Vector2(655, 405), Vector2(134, 66))
-    level_complete_people_value = _level_complete_label("ServedGuests", Vector2(960, 405), Vector2(140, 66))
-    var replay := _level_complete_button("ReplaySameLevel", "replay-button(2).png", Vector2(490, 577), Vector2(316, 101), Callable(self, "_level_complete_replay"))
-    replay.tooltip_text = "Replay this level; only improvements to your best score add coins."
-    level_complete_next_button = _level_complete_button("NextLevel", "next-level-button(2).png", Vector2(835, 577), Vector2(316, 101), Callable(self, "_level_complete_next"))
-    level_complete_next_button.tooltip_text = "Continue to the next unlocked level."
+    level_complete_coin_value = _level_complete_label("EarnedCoins", Vector2(628, 402), Vector2(205, 52))
+    level_complete_people_value = _level_complete_label("ServedGuests", Vector2(932, 402), Vector2(195, 52))
+    var replay := _level_complete_button("ReplaySameLevel", "replay-button(2).png", Vector2(680, 548), Vector2(200, 67), Callable(self, "_level_complete_replay"))
+    # Tooltip disabled: replay.tooltip_text = "Replay this level; only improvements to your best score add coins."
+    level_complete_next_button = _level_complete_button("NextLevel", "next-level-button(2).png", Vector2(910, 548), Vector2(200, 67), Callable(self, "_level_complete_next"))
+    # Tooltip disabled: level_complete_next_button.tooltip_text = "Continue to the next unlocked level."
     level_complete_screen.hide()
 
 func show_level_complete_ui(stars_earned: int, coins_awarded: int, guests_served: int, guests_arrived: int) -> void:
@@ -2449,9 +2506,9 @@ func show_level_complete_ui(stars_earned: int, coins_awarded: int, guests_served
         var tween := create_tween()
         tween.tween_property(star, "scale", Vector2.ONE, 0.32).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT).set_delay(float(star_index) * 0.12)
     level_complete_coin_value.text = str(coins_awarded)
-    level_complete_coin_value.tooltip_text = "Coins actually added to the saved wallet on this run; replays award only new-best improvements."
+    # Tooltip disabled: level_complete_coin_value.tooltip_text = "Coins actually added to the saved wallet on this run; replays award only new-best improvements."
     level_complete_people_value.text = "%d/%d" % [guests_served, maxi(guests_arrived, guests_served)]
-    level_complete_people_value.tooltip_text = "People served / people who arrived during this level."
+    # Tooltip disabled: level_complete_people_value.tooltip_text = "People served / people who arrived during this level."
     level_complete_next_button.visible = current_level < LEVELS.size() - 1
     # Remove the old text panel and make these two real image buttons interactive.
     if start_panel != null:
@@ -2512,7 +2569,7 @@ func _level_failed_button(button_name: String, filename: String, at: Vector2, di
     button.name = button_name
     var texture: Texture2D = load("res://assets/ui/level_failed/" + filename)
     button.texture_normal = texture
-    button.texture_hover = texture
+    button.texture_hover = button.texture_normal
     button.texture_pressed = texture
     button.ignore_texture_size = true
     button.stretch_mode = TextureButton.STRETCH_SCALE
@@ -2542,7 +2599,7 @@ func create_level_failed_ui() -> void:
     background.position = Vector2.ZERO
     background.size = Vector2(W, H)
     background.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-    background.stretch_mode = TextureRect.STRETCH_SCALE
+    background.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
     background.size = Vector2(W, H)
     background.mouse_filter = Control.MOUSE_FILTER_IGNORE
     level_failed_screen.add_child(background)
@@ -2552,21 +2609,21 @@ func create_level_failed_ui() -> void:
         var star := TextureRect.new()
         star.name = "FailedGrayStar%d" % (star_index + 1)
         star.texture = gray
-        star.position = Vector2(665 + star_index * 114, 220)
-        star.size = Vector2(103, 98)
+        star.position = Vector2(763 + star_index * 92, 242)
+        star.size = Vector2(80, 76)
         star.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
         star.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-        star.size = Vector2(103, 98)
+        star.size = Vector2(80, 76)
         star.mouse_filter = Control.MOUSE_FILTER_IGNORE
         level_failed_screen.add_child(star)
 
     # Illustrated counters: coins earned on this attempt and customers served/arrived.
-    level_failed_coins_value = _level_failed_label("FailedEarnedCoins", Vector2(645, 360), Vector2(134, 66))
-    level_failed_guests_value = _level_failed_label("FailedServedGuests", Vector2(948, 360), Vector2(140, 66))
-    level_failed_replay_button = _level_failed_button("ReplayFailedLevel", "replay-button(3).png", Vector2(490, 577), Vector2(316, 101), Callable(self, "_level_failed_replay"))
-    level_failed_replay_button.tooltip_text = "Replay this level. Failed attempts do not award campaign coins."
-    level_failed_select_button_art = _level_failed_button("SelectLevelAfterFailure", "select-level-button-fail.png", Vector2(846, 577), Vector2(316, 101), Callable(self, "_level_failed_select_level"))
-    level_failed_select_button_art.tooltip_text = "Open level selection; your unlocked progress is preserved."
+    level_failed_coins_value = _level_failed_label("FailedEarnedCoins", Vector2(628, 360), Vector2(205, 52))
+    level_failed_guests_value = _level_failed_label("FailedServedGuests", Vector2(932, 360), Vector2(195, 52))
+    level_failed_replay_button = _level_failed_button("ReplayFailedLevel", "replay-button(3).png", Vector2(680, 548), Vector2(200, 67), Callable(self, "_level_failed_replay"))
+    # Tooltip disabled: level_failed_replay_button.tooltip_text = "Replay this level. Failed attempts do not award campaign coins."
+    level_failed_select_button_art = _level_failed_button("SelectLevelAfterFailure", "select-level-button-fail.png", Vector2(910, 548), Vector2(200, 67), Callable(self, "_level_failed_select_level"))
+    # Tooltip disabled: level_failed_select_button_art.tooltip_text = "Open level selection; your unlocked progress is preserved."
     level_failed_screen.hide()
 
 func show_level_failed_ui(coins_awarded: int, guests_served: int, guests_arrived: int) -> void:
@@ -2574,9 +2631,9 @@ func show_level_failed_ui(coins_awarded: int, guests_served: int, guests_arrived
         return
     hide_level_complete_ui()
     level_failed_coins_value.text = str(coins_awarded)
-    level_failed_coins_value.tooltip_text = "Coins added to your wallet in this attempt. Failed campaign runs do not award coins."
+    # Tooltip disabled: level_failed_coins_value.tooltip_text = "Coins added to your wallet in this attempt. Failed campaign runs do not award coins."
     level_failed_guests_value.text = "%d/%d" % [guests_served, maxi(guests_arrived, guests_served)]
-    level_failed_guests_value.tooltip_text = "Guests served / guests who arrived during this level."
+    # Tooltip disabled: level_failed_guests_value.tooltip_text = "Guests served / guests who arrived during this level."
     if start_panel != null: start_panel.hide()
     if shop_button != null: shop_button.hide()
     if stage_panel != null: stage_panel.hide()
@@ -2615,12 +2672,12 @@ func create_ui() -> void:
     # The old full-width line covered the top illustrated HUD. Keep it hidden
     # as a compatibility placeholder; five separate values now fit the art.
     hud.hide()
+    # Exactly four values aligned with the illustrated HUD boxes (1280x720).
     var counter_layout := [
-        ["level", Vector2(40, 13), Vector2(82, 46), 21, Color("fff3d1")],
-        ["clock", Vector2(181, 12), Vector2(115, 46), 24, Color("ffffff")],
-        ["coins", Vector2(334, 13), Vector2(112, 46), 22, Color("fff1b8")],
-        ["stars", Vector2(462, 15), Vector2(100, 42), 20, Color("fff5ce")],
-        ["guests", Vector2(584, 13), Vector2(53, 45), 22, Color("ffffff")]
+        ["coins", Vector2(347, 12), Vector2(126, 46), 34, Color("ffffff")],
+        ["clock", Vector2(556, 12), Vector2(126, 46), 34, Color("ffffff")],
+        ["stars", Vector2(755, 12), Vector2(126, 46), 34, Color("ffffff")],
+        ["guests", Vector2(940, 12), Vector2(126, 46), 34, Color("ffffff")]
     ]
     for spec in counter_layout:
         var label := Label.new()
@@ -2650,6 +2707,7 @@ func create_ui() -> void:
     message_label.add_theme_font_size_override("font_size", 14)
     message_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
     root_ui.add_child(message_label)
+    message_label.visible = false # Hide transient button/action feedback
     start_panel = PanelContainer.new()
     start_panel.position = Vector2(310, 75)
     start_panel.size = Vector2(660, 550)
@@ -2744,7 +2802,7 @@ func create_stage_ui() -> void:
     for j in range(STAGE_NAMES.size()):
         var tab := Button.new()
         tab.text = "STAGE %d" % (j + 1)
-        tab.tooltip_text = STAGE_NAMES[j]
+        # Tooltip disabled: tab.tooltip_text = STAGE_NAMES[j]
         tab.size_flags_horizontal = Control.SIZE_EXPAND_FILL
         tab.pressed.connect(select_stage_page.bind(j))
         chapter_bar.add_child(tab)
@@ -2876,7 +2934,7 @@ func refresh_stage_select() -> void:
         var day_walkouts: int = int(best_walkouts.get(str(day_id), 0))
         if stars > 0 and day_walkouts > 0:
             play.text = "★ RECOVER (%d)" % day_walkouts
-            play.tooltip_text = "Replay this day with fewer unhappy walkouts to recover up to %s review stars. Your best walkout record is kept." % ("%.2f" % (float(day_walkouts) / 3.0))
+            # Tooltip disabled: play.tooltip_text = "Replay this day with fewer unhappy walkouts to recover up to %s review stars. Your best walkout record is kept." % ("%.2f" % (float(day_walkouts) / 3.0))
         else:
             play.text = "REPLAY DAY" if stars > 0 else "PLAY DAY" if available else "LOCKED"
         play.disabled = not available
@@ -2895,6 +2953,9 @@ func create_showcase_ui() -> void:
     showcase_panel.position = Vector2(235, 75)
     showcase_panel.size = Vector2(810, 585)
     showcase_panel.z_index = 55
+    var coin_board_style := StyleBoxTexture.new()
+    coin_board_style.texture = preload("res://assets/ui/coin_shop/coin-shop-screen.png")
+    showcase_panel.add_theme_stylebox_override("panel", coin_board_style)
     var outer := VBoxContainer.new()
     outer.add_theme_constant_override("separation", 10)
     showcase_panel.add_child(outer)
@@ -2918,6 +2979,89 @@ func create_showcase_ui() -> void:
     root_ui.add_child(showcase_panel)
     showcase_panel.hide()
 
+# Dedicated full-screen Coin Shop. Bundle buttons are visual previews until billing is connected.
+var coin_shop_overlay: Control
+
+func create_coin_shop_overlay() -> void:
+    if coin_shop_overlay != null:
+        return
+    # Approved image already includes all package names, prices and illustrations.
+    # Do not recreate those as overlays: only add working controls and live totals.
+    coin_shop_overlay = Control.new()
+    coin_shop_overlay.name = "CoinShopOverlay"
+    coin_shop_overlay.position = Vector2.ZERO
+    coin_shop_overlay.size = Vector2(1280, 720)
+    coin_shop_overlay.z_index = 80
+    coin_shop_overlay.mouse_filter = Control.MOUSE_FILTER_STOP
+    root_ui.add_child(coin_shop_overlay)
+    var backdrop := TextureRect.new()
+    backdrop.name = "ApprovedCoinShopArtwork"
+    backdrop.texture = preload("res://assets/ui/coin_shop/coin-shop-screen.png")
+    backdrop.position = Vector2.ZERO
+    backdrop.size = Vector2(1280, 720)
+    backdrop.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+    backdrop.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+    backdrop.mouse_filter = Control.MOUSE_FILTER_STOP
+    coin_shop_overlay.add_child(backdrop)
+
+    var close := TextureButton.new()
+    close.name = "CoinShopCloseButton"
+    close.texture_normal = preload("res://assets/ui/settings/close.png")
+    close.ignore_texture_size = true
+    close.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
+    close.position = Vector2(1072, 170)
+    close.size = Vector2(62, 62)
+    close.pressed.connect(close_coin_shop_overlay)
+    coin_shop_overlay.add_child(close)
+
+    # Wooden counters stay outside the artwork's offer panel.
+    for counter_kind in ["coins", "stars"]:
+        var is_coin: bool = counter_kind == "coins"
+        var counter_bg := TextureRect.new()
+        counter_bg.texture = load("res://assets/ui/level_select/" + ("coin-bank.png" if is_coin else "star-counter.png"))
+        counter_bg.position = Vector2(16, 10) if is_coin else Vector2(1039, 10)
+        counter_bg.size = Vector2(225, 65)
+        counter_bg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+        counter_bg.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+        counter_bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
+        coin_shop_overlay.add_child(counter_bg)
+        var amount := Label.new()
+        amount.name = "CoinShopCoins" if is_coin else "CoinShopStars"
+        amount.position = counter_bg.position + Vector2(77, 7)
+        amount.size = Vector2(145, 51)
+        amount.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+        amount.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+        amount.autowrap_mode = TextServer.AUTOWRAP_OFF
+        amount.add_theme_font_override("font", preload("res://assets/fonts/LilitaOne-Regular.ttf"))
+        amount.add_theme_font_size_override("font_size", 32)
+        amount.add_theme_color_override("font_color", Color.WHITE)
+        amount.add_theme_color_override("font_outline_color", Color("4c1f06"))
+        amount.add_theme_constant_override("outline_size", 3)
+        amount.mouse_filter = Control.MOUSE_FILTER_IGNORE
+        coin_shop_overlay.add_child(amount)
+
+    # Each purchase button sits within its own illustrated package panel.
+    # Purchases are demo-only until the payment system is connected.
+    var button_positions := [Vector2(457, 365), Vector2(868, 365), Vector2(457, 585), Vector2(868, 585)]
+    for i in range(button_positions.size()):
+        var buy := TextureButton.new()
+        buy.name = "CoinShopBuy%d" % (i + 1)
+        buy.texture_normal = preload("res://assets/ui/shop/buy-botton.png")
+        buy.ignore_texture_size = true
+        buy.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT_CENTERED
+        buy.position = button_positions[i]
+        buy.size = Vector2(132, 42)
+        buy.pressed.connect(demo_coin_notice)
+        coin_shop_overlay.add_child(buy)
+    coin_shop_overlay.hide()
+
+func close_coin_shop_overlay() -> void:
+    coin_shop_overlay.hide()
+    if showcase_from_stage:
+        show_stage_select()
+    else:
+        show_level_brief()
+
 func showcase_line(text_value: String, font_size: int = 17) -> void:
     var l := Label.new()
     l.text = text_value
@@ -2936,6 +3080,21 @@ func open_showcase(section: String) -> void:
     stage_panel.hide()
     start_panel.hide()
     clear_showcase()
+    if section == "coins":
+        if coin_shop_overlay == null:
+            create_coin_shop_overlay()
+        for node in coin_shop_overlay.get_children():
+            if node is Label and str(node.text).begins_with("YOUR COINS:"):
+                node.text = "YOUR COINS: %d" % wallet_coins
+        showcase_panel.hide()
+        var coin_label := coin_shop_overlay.get_node_or_null("CoinShopCoins") as Label
+        var star_label := coin_shop_overlay.get_node_or_null("CoinShopStars") as Label
+        if coin_label != null:
+            coin_label.text = str(wallet_coins)
+        if star_label != null:
+            star_label.text = "%.1f" % visible_review_stars()
+        coin_shop_overlay.show()
+        return
     match section:
         "trophies":
             showcase_title.text = "TROPHY CABINET"
@@ -2973,13 +3132,29 @@ func open_showcase(section: String) -> void:
             showcase_line("YOUR CURRENT WALLET: %d GAME COINS" % wallet_coins, 21)
             showcase_line("Earn coins in shifts and spend them on the regular Store upgrades.")
             showcase_line("These are proposed real-money bundles. Billing is NOT active.", 15)
-            var bundles := [["Starter Pouch", 500, "$0.99"], ["Chef's Wallet", 1400, "$1.99"], ["Pizza Vault", 4000, "$4.99"], ["Restaurant Tycoon", 10000, "$9.99"]]
+            var bundles := [
+                ["Starter Pouch", 500, "$0.99", "res://assets/ui/coin_shop/starter-pouch.png"],
+                ["Chef's Wallet", 1400, "$1.99", "res://assets/ui/coin_shop/chef-wallet.png"],
+                ["Pizza Vault", 4000, "$4.99", "res://assets/ui/coin_shop/pizza-vault.png"],
+                ["Restaurant Tycoon", 10000, "$9.99", "res://assets/ui/coin_shop/restaurant-tycoon.png"]
+            ]
             for bundle in bundles:
+                var row := HBoxContainer.new()
+                row.add_theme_constant_override("separation", 12)
+                var picture := TextureRect.new()
+                picture.texture = load(str(bundle[3]))
+                picture.custom_minimum_size = Vector2(88, 88)
+                picture.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+                picture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+                picture.mouse_filter = Control.MOUSE_FILTER_IGNORE
+                row.add_child(picture)
                 var btn := Button.new()
-                btn.text = "%s     |     %d coins     |     %s     |     PREVIEW" % [bundle[0], bundle[1], bundle[2]]
-                btn.custom_minimum_size = Vector2(0, 57)
+                btn.text = "%s   |   %d coins   |   %s   |   PREVIEW" % [bundle[0], bundle[1], bundle[2]]
+                btn.custom_minimum_size = Vector2(0, 88)
+                btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
                 btn.pressed.connect(demo_coin_notice)
-                showcase_body.add_child(btn)
+                row.add_child(btn)
+                showcase_body.add_child(row)
             demo_shop_message = Label.new()
             demo_shop_message.text = "No payment is collected. No coins will be added by these preview buttons."
             demo_shop_message.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -3361,7 +3536,7 @@ func _process(delta: float) -> void:
     var clock_dt: float = 0.0 if current_level == 0 and tutorial_step >= 0 and not tutorial_seen else dt
     elapsed += clock_dt
     if remaining > 0.0:
-        remaining = maxf(0.0, remaining - clock_dt)
+        remaining = maxf(0.0, remaining - dt)  # Shift timer counts down even during Level 1 tutorial; guest patience stays paused.
     else:
         # The doors are closed: existing guests may still finish eating and paying.
         # After the door closes, service continues without any forced timeout.
@@ -3379,7 +3554,7 @@ func _process(delta: float) -> void:
         party["patience"] = starting_queue_patience()
         party["patience_bar_max"] = party["patience"]
         birthday_id = int(party["id"])
-        queue.push_front(party)
+        queue.append(party) # Birthday arrivals also respect first-come-first-served order.
         launch_music_event("party")
         message = "BIRTHDAY PARTY OF FOUR ARRIVED! Save a 4-seat table!" if has_red_table() else "BIRTHDAY RESERVATION OF TWO ARRIVED! Convert a yellow table to red for larger groups."
     # Natural arrivals: one party at opening, then irregularly staggered groups.
@@ -3506,19 +3681,14 @@ func update_ui() -> void:
     # remaining time (rounded UP) rather than elapsed time or "CLOSING".
     var seconds_left: int = maxi(0, ceili(remaining))
     var countdown: String = "%02d:%02d" % [int(seconds_left / 60), seconds_left % 60]
-    var seated_guests: int = 0
-    for table in tables:
-        if not (table.get("party", {}) as Dictionary).is_empty():
-            seated_guests += int(table["party"].get("size", 0))
-    if hud_counters.has("level"):
-        (hud_counters["level"] as Label).text = "E%d" % endless_wave if endless_mode else str(current_level + 1)
-        (hud_counters["clock"] as Label).text = countdown
+    if hud_counters.has("coins"):
         (hud_counters["coins"] as Label).text = str(cash)
+        (hud_counters["clock"] as Label).text = countdown
         (hud_counters["stars"] as Label).text = "%.1f" % visible_review_stars()
-        (hud_counters["guests"] as Label).text = str(seated_guests)
+        (hud_counters["guests"] as Label).text = str(served)
         for label in hud_counters.values():
             (label as Label).visible = running
-    message_label.text = (message + ("  |  QUEUED: %d" % action_queue.size() if not action_queue.is_empty() else "")).substr(0, 120)
+    message_label.visible = false # Keep gameplay action/button feedback hidden
 
 func _input(event: InputEvent) -> void:
     if event is InputEventMouseButton and event.pressed:
@@ -3618,9 +3788,11 @@ func handle_click(point: Vector2) -> void:
             selected_recipe = clampi(int((point.x-1020.0) / 76.0), 0, 2)
             message = "Selected pizza: " + PIZZA_TYPES[selected_recipe]
             return
-    for i in range(queue.size()):
-        var p := Vector2(104.0, 185.0 + i * 116.0)
-        if point.distance_to(p) < 60.0:
+    for i in range(mini(queue.size(), QUEUE_SPOTS.size())):
+        var p: Vector2 = QUEUE_SPOTS[mini(queue.size(), QUEUE_SPOTS.size()) - 1 - i]
+        var bubble_hit: Rect2 = Rect2(p.x - 65.0, p.y - 132.0, 58.0, 53.0)
+        var face_hit: Rect2 = Rect2(p.x - 23.0, p.y - 91.0, 46.0, 42.0)
+        if bubble_hit.has_point(point) or face_hit.has_point(point):
             selected_party = i
             if tutorial_step == 0: tutorial_advance(1)
             message = "Party of %d selected. Choose a %d+ seat table." % [queue[i]["size"], queue[i]["size"]]
@@ -3773,7 +3945,7 @@ func complete_task() -> void:
             if party["size"] == t["seats"]:
                 cash += 5
                 add_float(TABLE_POS[i], "+$5 PERFECT FIT")
-            message = "Seated %d guests! +50%% remaining patience; 4 seconds to choose a pizza." % [party["size"]]
+            message = ""
         "order":
             # Fast order bonus: collect the ticket within 3 seconds of READY TO ORDER.
             # Increase remaining patience by 25%, once per party (not 25 points).
@@ -3827,11 +3999,11 @@ func complete_task() -> void:
             var tip_patience: float = float(party.get("tip_patience_at_ready", party.get("patience", 0.0)))
             var patience_fraction: float = clampf(tip_patience / 100.0, 0.0, 1.0)
             var party_count: float = float(maxi(1, int(cfg("party_cap"))))
-            # Keep the established base and tip amounts. Only the tip is scaled
-            # when patience at payment-ready drops below 25 seconds.
+            # Preserve the base payment. Tips scale directly with remaining patience:
+            # faster service means higher tips, without changing base earnings.
             var base_payment: float = (75.0 if current_level >= 8 else 90.0) / party_count
-            var full_tip: float = (45.0 if current_level >= 8 else 30.0) * patience_fraction / party_count
-            var tip_multiplier: float = clampf(tip_patience / 25.0, 0.0, 1.0)
+            var full_tip: float = (45.0 if current_level >= 8 else 30.0) / party_count
+            var tip_multiplier: float = patience_fraction
             var earned_tip: float = full_tip * tip_multiplier
             var payment: int = maxi(1, roundi(base_payment + earned_tip))
             if bool(party["vip"]): payment += 1
@@ -3904,22 +4076,10 @@ func draw_table(index: int) -> void:
     var party_data: Dictionary = t.get("party", {})
     var occupied: bool = not party_data.is_empty()
     var table_number: int = int(t.get("number", TABLE_NUMBERS[index]))
-    # Draw guests at chair anchors BEFORE the table artwork so the tabletop
-    # occludes their laps instead of making them appear to sit on the table.
-    if occupied:
-        var guest_count: int = int(party_data.get("size", 0))
-        for k in range(guest_count):
-            var side: float = -1.0 if k % 2 == 0 else 1.0
-            var row: int = floori(float(k) / 2.0)
-            var guest_center: Vector2 = p + Vector2(side * 86.0, -7.0 + float(row) * 26.0)
-            if k == 0 and not customer_one_poses.is_empty():
-                var pose: int = 8 if str(t["state"]) == "eating" else (3 if str(t["state"]) == "pay" else 0)
-                draw_texture_rect(customer_one_poses[pose], Rect2(guest_center - Vector2(31, 80), Vector2(62, 98)), false)
-            else:
-                person(guest_center, party_data["color"], 0.58, sin(elapsed * 3 + k) * 1.5)
+    # Customer sprite rendering temporarily disabled for gameplay testing.
+    # Occupancy, customer states, patience, and service logic remain active.
     if not draw_mapped_table(table_number, seats):
-        # Fallback rectangle only if sprite cannot be loaded.
-        draw_rect(Rect2(p-Vector2(62,40), Vector2(124,80)), Color("df4945") if seats == 4 else Color("f6d64a"))
+        draw_rect(Rect2(p - Vector2(62, 10), Vector2(124, 50)), Color("df4945") if seats == 4 else Color("f6d64a"))
     # Permanent number = location, independent of capacity or purchase order.
     
     # Table numbers remain internal identifiers; do not paint them on the table.
@@ -3936,13 +4096,22 @@ func draw_table(index: int) -> void:
         word(dirty_label,p+Vector2(0,5),15,BROWN)
     var state: String = t["state"]
     var label: String = {"empty":"SEAT","deciding":"CHOOSING...","order":"TAKE ORDER","ticket":"TAKE TO DISH!","chef_wait":"SELECT TOPPINGS","cooking":"COOKING...","ready":"AT PICKUP BAR","collected":"DELIVER PIZZA!","eating":"EATING...","pay":"COLLECT CASH","dirty":"PICK UP DISHES","dishes_collected":"AT DISH STATION"}[state]
+    # Approved animated visual cues replace the text labels for actionable tables.
+    if state in ["order", "pay", "dirty"]:
+        var cue: Texture2D = table_action_icons.get(state)
+        if cue != null:
+            var pulse: float = 1.0 + 0.10 * sin(elapsed * 6.0 + float(index) * 0.4)
+            var cue_size: Vector2 = Vector2(72, 72) * pulse
+            draw_texture_rect(cue, Rect2(p + Vector2(0, -98) - cue_size * 0.5, cue_size), false)
     var shade := Color("35965c") if state in ["empty","ready","collected"] else Color("bd7936")
     if state in ["dirty", "dishes_collected"]: shade=Color("796a65")
     if state == "pay": shade=Color("d3a02f")
-    draw_rect(Rect2(p+Vector2(-69,52),Vector2(138,34)),shade)
+    if state not in ["empty", "order", "pay", "dirty"]:
+        draw_rect(Rect2(p+Vector2(-69,52),Vector2(138,34)),shade)
     if state == "chef_wait" and occupied:
         label = "TAP: %d PIZZA%s LEFT" % [int(party_data.get("pizzas_left", 1)), "S" if int(party_data.get("pizzas_left", 1)) != 1 else ""]
-    word(label,p+Vector2(0,75),17,Color.WHITE)
+    if state not in ["empty", "order", "pay", "dirty"]:
+        word(label,p+Vector2(0,75),17,Color.WHITE)
     if occupied:
         var pct: float = clampf(float(party_data.get("patience", 0.0))/maxf(0.01, float(party_data.get("patience_bar_max", 100.0))),0,1)
         var per_second_decay: float = (1.5 if state in ["order", "ticket", "ready", "collected", "robot_in_transit", "pay"] else 0.3) * float(cfg("table_decay"))
@@ -3962,6 +4131,10 @@ func _draw() -> void:
         draw_texture_rect(restaurant_background, Rect2(0, 0, W, H), false)
     else:
         draw_rect(Rect2(0,0,W,H),FLOOR)
+    # The hanging CLOSED sign appears on the entrance as soon as the shift clock reaches zero.
+    # Guests already inside can finish their meals; no new arrivals are admitted.
+    if running and remaining <= 0.0 and closed_door_sign != null:
+        draw_texture_rect(closed_door_sign, Rect2(91, 129, 110, 116), false)
     # Legacy fallback floor styling when no replacement gameplay background exists.
     if restaurant_background == null:
         for y in range(85,645,54):
@@ -3972,32 +4145,46 @@ func _draw() -> void:
         draw_rect(Rect2(0,0,1280,79),Color("59352d"))
         word("PIZZA PANIC!",Vector2(180,49),26,Color("ffe2a3"))
         
-    if restaurant_background != null:
-        word(str(wallet_coins), Vector2(482, 42), 23, Color("fff4da"))
-        word(str(maxi(0, ceili(remaining))), Vector2(783, 42), 23, Color("fff4da"))
-        word(str(served), Vector2(1110, 42), 23, Color("fff4da"))
-        word(str(queue.size()), Vector2(1195, 42), 23, Color("fff4da"))
-    word("WAITING PARTIES",Vector2(106,116),21,Color("fff4da"))
+    # HUD values are rendered exclusively by the four live HUD Labels.
+    # Waiting parties header intentionally hidden.
     word("ALPHA 13.39", Vector2(1165, 695), 13, Color("fff4da"))
-    for i in range(4):
-        var p := Vector2(106,185+i*116)
-        draw_rect(Rect2(p-Vector2(88,45),Vector2(175,98)),Color(1.0, 0.95, 0.83, 0.86) if selected_party==i else Color(0.95, 0.80, 0.62, 0.75))
-        if i >= queue.size():
-            word("NEXT PARTY",p+Vector2(0,13),16,BROWN)
-            continue
-        var g:Dictionary = queue[i]
-        for k in range(g["size"]):
-            if k == 0 and not customer_one_poses.is_empty():
-                draw_texture_rect(customer_one_poses[4], Rect2(p + Vector2((k-(g["size"]-1)/2.0)*35-22,-49), Vector2(44,70)), false)
-            else:
-                person(p+Vector2((k-(g["size"]-1)/2.0)*35,-13),g["color"],.68,sin(elapsed*3+k)*2)
-        word("PARTY OF %d" % g["size"],p+Vector2(0,26),18,DARK)
-        var queue_decay_rate: float = maxf(0.01, effective_patience_decay(float(cfg("queue_decay"))) * (0.75 if has_upgrade("entertainer") else 1.0))
-        var seconds_waiting: int = maxi(0, ceili(float(g["patience"]) / queue_decay_rate))
-        var pct:float=clampf(float(g["patience"])/maxf(0.01, float(g.get("patience_bar_max", 100.0))),0,1)
-        word("WAIT  %ds" % seconds_waiting, p+Vector2(0,44),15,Color("a32e23") if pct<=0.25 else DARK)
-        draw_rect(Rect2(p+Vector2(-74,46),Vector2(148,5)),Color("98785f"))
-        draw_rect(Rect2(p+Vector2(-74,46),Vector2(148*pct,5)),Color("e94a40") if pct <= 0.25 else (Color("edbe41") if pct <= 0.5 else Color("61b978")))
+    # Queue stands on the red carpet at five fixed reference positions.
+    # Click areas share these exact anchors with the queue selection logic.
+    for i in range(mini(5, queue.size())):
+        var p: Vector2 = QUEUE_SPOTS[mini(queue.size(), QUEUE_SPOTS.size()) - 1 - i]
+        var g: Dictionary = queue[i]
+        var pct: float = clampf(float(g["patience"]) / maxf(0.01, float(g.get("patience_bar_max", 100.0))), 0.0, 1.0)
+        var sprite_id: int = posmod(int(g["id"]), maxi(1, queue_standing_sprites.size()))
+        if not queue_standing_sprites.is_empty():
+            var moods: Array = queue_standing_sprites[sprite_id]
+            var pose: Texture2D = moods[1 if pct <= 0.4 else 0]
+            if pose != null:
+                var target_height: float = 110.0
+                var target_width: float = target_height * float(pose.get_width()) / maxf(1.0, float(pose.get_height()))
+                draw_texture_rect(pose, Rect2(p.x - target_width * 0.5, p.y - target_height * 0.80, target_width, target_height), false)
+        if selected_party == i:
+            draw_arc(p + Vector2(0, 19), 24.0, 0.0, TAU, 32, Color("ffe247"), 3.0)
+        # Party size and countdown are drawn inside the approved speech bubble.
+        # The thermometer drains from top (green) to bottom (red).
+        var bubble_rect: Rect2 = Rect2(p.x - 65.0, p.y - 132.0, 58.0, 53.0)
+        if party_patience_bubble != null:
+            draw_texture_rect(party_patience_bubble, bubble_rect, false)
+        # Independent inset fill: fully contained by the bubble's left thermometer window.
+        # Rounded track and a bottom-anchored fill, aligned to the bubble artwork.
+        var track_x: float = bubble_rect.position.x + 13.0
+        var track_top: float = bubble_rect.position.y + 13.0
+        var track_bottom: float = bubble_rect.position.y + 36.0
+        draw_line(Vector2(track_x, track_top), Vector2(track_x, track_bottom), Color("211710"), 9.0, true)
+        draw_circle(Vector2(track_x, track_top), 4.5, Color("211710"))
+        draw_circle(Vector2(track_x, track_bottom), 4.5, Color("211710"))
+        var fill_color: Color = Color("ed4537") if pct <= 0.25 else (Color("f49a27") if pct <= 0.5 else (Color("f4d433") if pct <= 0.75 else Color("23d821")))
+        var fill_top: float = track_bottom - 23.0 * pct
+        if pct > 0.01:
+            draw_line(Vector2(track_x, fill_top), Vector2(track_x, track_bottom), fill_color, 5.0, true)
+            draw_circle(Vector2(track_x, track_bottom), 2.5, fill_color)
+            draw_circle(Vector2(track_x, fill_top), 2.5, fill_color)
+        # Center the party size within the white area to the right of the thermometer.
+        word("%d" % int(g["size"]), bubble_rect.position + Vector2(39.0, 35.0), 23, Color("231710"))
     # decorative wall items
     for x in [295.0,665.0,937.0]:
         draw_circle(Vector2(x,105),13,Color("66a46c"))
@@ -4051,7 +4238,7 @@ func _draw() -> void:
     word("DISHWASHING",Vector2(1138,476),15,Color("fff6db"))
     word("TAP: DROP %d/%d DISHES" % [pending_cleaning.size(), dish_cart_capacity()],Vector2(1138,493),12,Color("fff3bb"))
     # kitchen artwork
-    word("KITCHEN",Vector2(1140,120),28,Color("fff3ce"))
+    # Kitchen heading intentionally hidden.
     if mode() in ["correct", "final"] and current_level < 5:
         word("CHOOSE PIZZA",Vector2(1140,515),16,Color("fff3ce"))
         for k in range(3):
@@ -4062,15 +4249,6 @@ func _draw() -> void:
         for k in range(4):
             draw_rect(Rect2(1018+k*60,525,55,45),Color("61ab76") if k in selected_toppings else Color("ffdda4"))
             word(INGREDIENT_NAMES[k].substr(0,4),Vector2(1045+k*60,553),13,BROWN)
-    draw_rect(Rect2(1024,145,231,146),Color("555059"))
-    draw_rect(Rect2(1039,164,202,107),Color("322e35"))
-    draw_circle(Vector2(1140,219),49,Color("f9a43d"))
-    draw_circle(Vector2(1140,218),42,Color("e9c070"))
-    for k in range(7):
-        var a:float=TAU*k/7.0
-        draw_circle(Vector2(1140,218)+Vector2(cos(a),sin(a))*29,7,Color("d94b37"))
-    word("STONE OVEN",Vector2(1141,283),15,Color("fff1cf"))
-
     if chef_walk_remaining > 0.0 and not chef_walk_frames.is_empty() and running:
         var walk_progress: float = 1.0 - chef_walk_remaining / CHEF_WALK_SECONDS
         var walk_frame: int = mini(7, int(walk_progress * 8.0))
@@ -4107,14 +4285,14 @@ func _draw() -> void:
             # Draw the same walk cycle in either direction without changing gameplay coordinates.
             if waitress_facing_left:
                 draw_set_transform(waitress_pos + Vector2(0, 30), 0.0, Vector2(-1.0, 1.0))
-                draw_character_sprite(walk_tex, Vector2.ZERO, 145.0, true)
+                draw_character_sprite(walk_tex, Vector2.ZERO, 110.0, true)
                 draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
             else:
-                draw_character_sprite(walk_tex, waitress_pos + Vector2(0, 30), 145.0, true)
+                draw_character_sprite(walk_tex, waitress_pos + Vector2(0, 30), 110.0, true)
         else:
-            draw_character_sprite(waitress_poses[waitress_pose_index()], waitress_pos + Vector2(0, 30), 145.0, true)
+            draw_character_sprite(waitress_poses[waitress_pose_index()], waitress_pos + Vector2(0, 30), 110.0, true)
     else:
-        draw_character_sprite(waitress_poses[waitress_pose_index()], waitress_pos + Vector2(0, 30), 145.0, false)
+        draw_character_sprite(waitress_poses[waitress_pose_index()], waitress_pos + Vector2(0, 30), 110.0, false)
     
     if not held_tickets.is_empty(): word("TICKETS %d/2" % held_tickets.size(),waitress_pos+Vector2(0,-41),15,Color("fff3b5"))
     if not carried_pizzas.is_empty(): word("PIZZAS %d/%d" % [carried_pizzas.size(), 4 if has_upgrade("tray") else 2],waitress_pos+Vector2(0,-41),15,Color("fff3b5"))
@@ -4136,6 +4314,6 @@ func install_graphics_editor_shortcut() -> void:
     editor_button.text = "GRAPHICS EDITOR"
     editor_button.position = Vector2(1060, 670)
     editor_button.size = Vector2(195, 40)
-    editor_button.tooltip_text = "Open graphics positioning editor; save progress first."
+    # Tooltip disabled: editor_button.tooltip_text = "Open graphics positioning editor; save progress first."
     editor_button.pressed.connect(func(): get_tree().change_scene_to_file("res://scenes/GraphicsEditor.tscn"))
     add_child(editor_button)
