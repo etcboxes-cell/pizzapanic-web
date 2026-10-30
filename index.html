@@ -132,6 +132,7 @@ async function prepareSplitPack() {
 
     const pack = await new Blob(parts).arrayBuffer();
     await engine.preloadFile(pack, "index.pck");
+    GODOT_CONFIG.mainPack = null;
 }
 
 
