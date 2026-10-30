@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpkp6ja8n33xt"
-path="res://.godot/imported/settings-screen.png-643e975c4413ab570e7c8aedc39eba6a.ctex"
+uid="uid://dydky4v1t3eia"
+path="res://.godot/imported/pause_wood_board.png-1adeca48bde893db343ae5de7f332861.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/settings/settings-screen.png"
-dest_files=["res://.godot/imported/settings-screen.png-643e975c4413ab570e7c8aedc39eba6a.ctex"]
+source_file="res://assets/ui/gameplay/pause_wood_board.png"
+dest_files=["res://.godot/imported/pause_wood_board.png-1adeca48bde893db343ae5de7f332861.ctex"]
 
 [params]
 

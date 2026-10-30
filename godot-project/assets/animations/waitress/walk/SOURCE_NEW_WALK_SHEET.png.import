@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjolbkjcw7tw6"
-path="res://.godot/imported/fail-level-screen.png-59337347a29dde5c692bf839c2affcfb.ctex"
+uid="uid://brmqp8ivo7bx4"
+path="res://.godot/imported/SOURCE_NEW_WALK_SHEET.png-71f547c4dab9d94451322f8865269fe8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/level_failed/fail-level-screen.png"
-dest_files=["res://.godot/imported/fail-level-screen.png-59337347a29dde5c692bf839c2affcfb.ctex"]
+source_file="res://assets/animations/waitress/walk/SOURCE_NEW_WALK_SHEET.png"
+dest_files=["res://.godot/imported/SOURCE_NEW_WALK_SHEET.png-71f547c4dab9d94451322f8865269fe8.ctex"]
 
 [params]
 
