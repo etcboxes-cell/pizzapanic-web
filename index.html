@@ -132,7 +132,6 @@ async function prepareSplitPack() {
 
     const pack = await new Blob(parts).arrayBuffer();
     await engine.preloadFile(pack, "index.pck");
-    GODOT_CONFIG.mainPack = null;
 }
 
 
@@ -222,6 +221,7 @@ async function prepareSplitPack() {
 	} else {
 		setStatusMode('progress');
 		prepareSplitPack().then(() => engine.startGame({
+            'mainPack': null,
 			'onProgress': function (current, total) {
 				if (current > 0 && total > 0) {
 					statusProgress.value = current;
