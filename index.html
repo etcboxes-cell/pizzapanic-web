@@ -124,14 +124,14 @@ async function prepareSplitPack() {
         const response = await fetch(`index.pck.part${i}`);
 
         if (!response.ok) {
-            throw new Error(`Game package part ${i} failed: HTTP ${response.status}`);
+            throw new Error(`Package part ${i} failed: HTTP ${response.status}`);
         }
 
         parts.push(await response.arrayBuffer());
     }
 
-    const pack = await new Blob(parts).arrayBuffer();
-    await engine.preloadFile(pack, "index.pck");
+    const blob = new Blob(parts, { type: "application/octet-stream" });
+    return URL.createObjectURL(blob);
 }
 
 
