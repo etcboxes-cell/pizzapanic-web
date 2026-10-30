@@ -220,7 +220,7 @@ async function prepareSplitPack() {
 		}
 	} else {
 		setStatusMode('progress');
-		prepareSplitPack().then(() => engine.startGame({
+		engine.init("index").then(() => prepareSplitPack()).then(() => engine.start({
             'mainPack': null,
 			'onProgress': function (current, total) {
 				if (current > 0 && total > 0) {
