@@ -20,10 +20,15 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Pizza Panic - Alpha 13.39"
 run/main_scene="res://scenes/Main.tscn"
+<<<<<<< HEAD
 boot_splash/image="res://assets/replacements/backgrounds/initial-screen.png"
 boot_splash/show_image=true
 boot_splash/bg_color=Color(0.15, 0.08, 0.035, 1)
+=======
+>>>>>>> 4929a3c (Pizza Panic Alpha 14.17)
 config/features=PackedStringArray("4.7", "GL Compatibility")
+boot_splash/bg_color=Color(0.15, 0.08, 0.035, 1)
+boot_splash/image="res://assets/replacements/backgrounds/initial-screen.png"
 
 [autoload]
 
