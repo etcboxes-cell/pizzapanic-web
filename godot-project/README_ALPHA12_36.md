@@ -1,1 +1,0 @@
-Alpha 12.36: Customers who finish eating but run out of patience waiting for payment walk out without paying or tipping. Dirty dishes remain, including double sets. Clean all dishes to finish. No reset.

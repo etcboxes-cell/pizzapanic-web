@@ -1,7 +1,0 @@
-Alpha 12.98 close buttons — game coordinates 1280x720
-settings: top-left=(986, 184), size=75x75
-shop: top-left=(1004, 145), size=75x75
-help: top-left=(1062, 151), size=75x75
-pre: top-left=(1005, 153), size=75x75
-All four live screens use the same approved settings close artwork.
-Visual alignment requires a rendered gameplay check; Godot headless validates loading only.

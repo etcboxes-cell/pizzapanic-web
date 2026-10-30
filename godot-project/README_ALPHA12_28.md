@@ -1,1 +1,0 @@
-Alpha 12.28: Completing Day 5 automatically opens the upgrade shop to purchase the 4-table expansion. Missing expansion gates also open the shop. No automatic purchases or save reset. Runtime test pending.

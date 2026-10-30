@@ -1,1 +1,0 @@
-Alpha 13.35: Settings audio switches explicitly on first two rows; Shop text shifted clear of row dividers; gameplay panel translucency and version marker. Gameplay background and table sprites retained. Automated runtime visual validation and customer/waitress artifact cleanup not yet verified.

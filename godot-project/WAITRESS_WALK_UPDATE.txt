@@ -1,1 +1,0 @@
-Alpha 13.38 waitress walking update: 9 RGBA frames, 280x350 each, bottom aligned; walk SpriteFrames updated to 9 frames at 8 FPS. Godot runtime validation not available in this environment. Safari deployment not performed.

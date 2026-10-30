@@ -1,1 +1,0 @@
-Alpha 13.30: waitress existing approved 8-frame walking animation is now selected during actual navigation, facing left/right. Existing idle/carrying poses and all gameplay/navigation remain unchanged. Other newly generated sheets require frame separation and visual validation before integration.

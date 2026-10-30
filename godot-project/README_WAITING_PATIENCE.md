@@ -1,1 +1,0 @@
-Waiting customers continue losing patience if tables are full or opening hours end. A WAIT seconds counter is shown for each visible waiting party. Existing level progress uses the same save as Alpha 12.14.1.

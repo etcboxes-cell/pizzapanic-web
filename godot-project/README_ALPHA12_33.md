@@ -1,1 +1,0 @@
-Alpha 12.33: delivery within 3 seconds of collecting order gives 25% more remaining patience, once per party. Standard cooking takes 5 seconds, so this reward is normally unreachable without pre-prepared pizza or other mechanics. Runtime test pending. No reset.
