@@ -1,0 +1,56 @@
+name: Publish Pizza Panic to itch.io
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Expected version shown in index.html (example: 15.82)'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pizza-panic-itch-html5
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout web export
+        uses: actions/checkout@v4
+
+      - name: Verify exported build and version
+        shell: bash
+        env:
+          EXPECTED_VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          for file in index.html index.js index.wasm index.pck; do
+            test -s "$file" || { echo "::error::Missing or empty $file"; exit 1; }
+          done
+          grep -Fq "$EXPECTED_VERSION" index.html || {
+            echo "::error::index.html does not contain requested version $EXPECTED_VERSION. Refusing to publish an older build."
+            exit 1
+          }
+          echo "Export files and version check passed."
+
+      - name: Install itch.io Butler
+        uses: remarkablegames/setup-butler@v3
+
+      - name: Publish browser build
+        shell: bash
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+          BUILD_VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          test -n "$BUTLER_API_KEY" || { echo "::error::BUTLER_API_KEY secret is missing"; exit 1; }
+          mkdir -p "$RUNNER_TEMP/pizza-panic-web"
+          cp index.html index.js index.wasm index.pck "$RUNNER_TEMP/pizza-panic-web/"
+          for file in index.png index.icon.png index.audio.worklet.js index.audio.position.worklet.js index.side.wasm; do
+            if test -f "$file"; then cp "$file" "$RUNNER_TEMP/pizza-panic-web/"; fi
+          done
+          butler push "$RUNNER_TEMP/pizza-panic-web" etcboxes/pizza-panic:html5 --userversion "$BUILD_VERSION"
